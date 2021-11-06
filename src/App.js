@@ -8,15 +8,14 @@ import Products from './pages/Products/Products'
 function App() {
   return (
     <div className="App">
-      <Products/>
-      {/* <Header/>
+      <Header/>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/aa" component={Home}/>
-          <Route exact path="/" component={Products}/>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/produtos" component={Products}/>
         </Switch>
       </BrowserRouter>
-      <Footer/> */}
+      <Footer/>
     </div>
   );
 }
