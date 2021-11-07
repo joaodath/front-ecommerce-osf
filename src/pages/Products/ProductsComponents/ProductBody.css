@@ -1,0 +1,18 @@
+section {
+    width: 95%;
+    padding: 35px 20px 15px;
+    background-color: rgb(242, 242, 242);
+    margin: 30px auto;
+    max-width: 1200px;
+    border-radius: 10px;
+    height: 1800px;
+    box-shadow: rgb(0, 0, 0) 0px 3px 10px -5px;
+}
+
+.Carousel{
+    margin-top: 30px;
+}
+center > p{
+    margin-top: 20px;
+}
+
