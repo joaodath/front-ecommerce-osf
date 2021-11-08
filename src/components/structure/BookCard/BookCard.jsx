@@ -6,7 +6,7 @@ function BookCard({ book }) {
 
   return (
     <div className="container__bookCard">
-      <p><img src={book.coverImg} alt={`${book.title}'s cover`} /></p>
+      <p><img src={book.coverImg} alt={`${book.title}'s cover`} style={ {width: "4rem"} }/></p>
       <p>{book.title}</p>
       <p>{book.price}</p>
       <button type="button" onClick={() => addProduct(book)}>
