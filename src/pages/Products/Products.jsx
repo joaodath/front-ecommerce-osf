@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import ProductBody from './ProductsComponents/ProductBody'
 import ProductsMenu from './ProductsComponents/ProductsMenu'
 import './Products.css'
+import Searchbar from '../../components/structure/Searchbar/Searchbar'
+import Carousel from '../../components/structure/Carousel/Carousel'
+import CarouselComp from '../../components/structure/Carousel/Carousel'
 
 function Products() {
     return (
@@ -45,10 +48,11 @@ function Products() {
                         </h1>
                     </div>
                     <div className="busca-desk">
-                        <fieldset className="busca">
+                        {/* <fieldset className="busca">
                             <input id="ftBox26840e439e2f4a7eb00400705d4cab3a" className="fulltext-search-box ui-autocomplete-input" type="text" size="20" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"/>
                             <input id="ftBtn26840e439e2f4a7eb00400705d4cab3a" type="button" value="Buscar" class="btn-buscar"/>
-                        </fieldset>
+                        </fieldset> */}
+                        <Searchbar/>
                     </div>
                     <div className="login"><Link to="/account"><svg xmlns="http://www.w3.org/2000/svg" width="21.194" height="19" viewBox="0 0 21.194 19"><path d="M28.7,30.9H7.5l.156-.59C8.75,26.179,8.9,26,15,22.524c-1.468-1.772-1.678-3.306-1.542-5.555.152-2.518,1.8-5.068,4.642-5.068s4.49,2.55,4.642,5.068a7.02,7.02,0,0,1-1.554,5.558l.117.069c5.8,3.4,6.149,3.608,7.236,7.715Zm-19.973-.94h18.75c-.86-3.159-1.258-3.393-6.646-6.555l-1.11-.652.4-.428c1.6-1.737,1.822-3.094,1.688-5.3-.125-2.08-1.438-4.185-3.7-4.185s-3.578,2.1-3.7,4.184c-.134,2.215.083,3.574,1.682,5.3l.4.434-.514.293C9.93,26.495,9.605,26.679,8.723,29.961Z" transform="translate(-7.501 -11.901)" fill="#5d5d5d"></path></svg><p>Login</p></Link></div>
                     <div className="favoritos"><Link to="/meus-favoritos"><svg xmlns="http://www.w3.org/2000/svg" width="22.455" height="19" viewBox="0 0 22.455 19"><g transform="translate(17.567 -236)"><g transform="translate(-17.567 236)"><path d="M146.007,251.965l-5.8-5.832c-.251-.314-2.352-2.383-2.634-2.665-1.1-1.1-2.038-1.944-2.038-3.7a4.691,4.691,0,0,1,.972-2.79,5.231,5.231,0,0,1,4.139-2.226,5.133,5.133,0,0,1,3.323,1.348,8.148,8.148,0,0,1,1.818,2.289,2.338,2.338,0,0,1,.219.376h.063a14.781,14.781,0,0,1,1.129-1.724,2.286,2.286,0,0,0,.282-.314,6.335,6.335,0,0,1,1.975-1.536,4.829,4.829,0,0,1,5.079.658,5.274,5.274,0,0,1,1.724,2.383,4.333,4.333,0,0,1-.157,3.323,11.441,11.441,0,0,1-1.913,2.195c-1.38,1.38-2.728,2.728-4.107,4.076-.188.188-.314.345-.47.533C149.237,248.736,146.1,251.809,146.007,251.965ZM151.275,234h.439a5.775,5.775,0,0,1,3.386,1.348l1.035,1.1a5.044,5.044,0,0,1,.533.878,5.464,5.464,0,0,1,.6,2.195v.408a4.608,4.608,0,0,1-.22,1.285,7.932,7.932,0,0,1-.5,1.035,30.034,30.034,0,0,1-2.947,3.1c-.251.282-.5.533-.752.784-.408.439-6.71,6.678-6.835,6.866-.125-.094-2.069-2.069-2.257-2.226a1.228,1.228,0,0,0-.251-.314l-6.96-6.992a7.3,7.3,0,0,1-.815-.878,4.95,4.95,0,0,1-.878-3.449,5.8,5.8,0,0,1,.345-1.317,6.333,6.333,0,0,1,3.355-3.386,5.049,5.049,0,0,1,2.351-.408,6.408,6.408,0,0,1,4.7,2.728l.439.6a1.227,1.227,0,0,0,.251-.314,9.929,9.929,0,0,1,1.442-1.6l.47-.345a5.051,5.051,0,0,1,1.411-.752A4.777,4.777,0,0,1,151.275,234Z" transform="translate(-134.808 -234)" fill="#5d5d5d" fill-rule="evenodd"></path></g></g></svg><p>Favoritos</p></Link></div>
@@ -81,9 +85,9 @@ function Products() {
                                 </a>
                             </div>
                 </div>
-                <ProductsMenu/>
                 <main>
-                    <ProductBody/>
+                    <CarouselComp/>
+                    
                 </main>
             </div>
         </div>
