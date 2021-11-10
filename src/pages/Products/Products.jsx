@@ -1,11 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ProductBody from './ProductsComponents/ProductBody'
-import ProductsMenu from './ProductsComponents/ProductsMenu'
 import './Products.css'
 import Searchbar from '../../components/structure/Searchbar/Searchbar'
-import Carousel from '../../components/structure/Carousel/Carousel'
 import CarouselComp from '../../components/structure/Carousel/Carousel'
+import BookGrid from './BookGrid'
 
 function Products() {
     return (
@@ -87,7 +85,7 @@ function Products() {
                 </div>
                 <main>
                     <CarouselComp/>
-                    
+                    <BookGrid/>
                 </main>
             </div>
         </div>
