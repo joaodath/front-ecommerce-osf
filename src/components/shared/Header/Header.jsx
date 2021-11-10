@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Link } from "react-router-dom"
 
 function Header() {
     return (
-        <div>
-            <h3>Header</h3>
+        <div className="container__header">
+            <Link to="/cart">CART</Link>
         </div>
     )
 }

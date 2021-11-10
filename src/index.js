@@ -4,11 +4,12 @@ import "./index.scss";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import CartContextProvider from "./contexts/CartContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <CartContextProvider children={<App />}/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

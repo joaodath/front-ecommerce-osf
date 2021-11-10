@@ -46,6 +46,7 @@ export const CartReducer = (state, action) => {
       state.cartItems[
         state.cartItems.findIndex((item) => item.id === action.payload.id)
       ].quantity++;
+
       return {
         ...state,
         ...sumItems(state.cartItems),
@@ -55,11 +56,13 @@ export const CartReducer = (state, action) => {
       state.cartItems[
         state.cartItems.findIndex((item) => item.id === action.payload.id)
       ].quantity--;
+
       return {
         ...state,
         ...sumItems(state.cartItems),
         cartItems: [...state.cartItems],
       };
+
     case "CHECKOUT":
       return {
         cartItems: [],
