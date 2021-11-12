@@ -1,4 +1,5 @@
 import React, {useState}from 'react'
+import {Link} from 'react-router-dom'
 import { Box, Typography, Card, CardContent, CardMedia, CardActions, Button} from '@mui/material'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -12,8 +13,10 @@ export default function BookCard(props) {
             setIsFavorite(false)
         }
     }
+   
     return (
-        <Box
+        <div>
+            <Box
         display="flex"
         flexDirection="column"
         style={{height: '100%', backgroundColor: 'gray'}}
@@ -36,9 +39,10 @@ export default function BookCard(props) {
                     <Button size="small"><ShareIcon/></Button>
                     <Button size="small" onClick={favoritar}>{isFavorite? <FavoriteIcon/>:<FavoriteBorderIcon/>}</Button>
                 </CardActions>
+                <Button variant="primary "><Link to='/cart'>Comprar</Link></Button>
             </CardContent>
-            
         </Card>
     </Box>
+        </div>   
     )
 }

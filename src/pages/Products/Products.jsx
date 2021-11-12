@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './Products.css'
 import Searchbar from '../../components/structure/Searchbar/Searchbar'
 import CarouselComp from '../../components/structure/Carousel/Carousel'
+import BookInfo from '../../components/structure/BookInfo/BookInfo'
 import BookGrid from './BookGrid'
 
 function Products() {
@@ -86,6 +87,7 @@ function Products() {
                 <main>
                     <CarouselComp/>
                     <BookGrid/>
+                    <BookInfo/>
                 </main>
             </div>
         </div>

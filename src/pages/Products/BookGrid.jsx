@@ -4,6 +4,7 @@ import BookCard from '../../components/structure/BookCard/BookCard'
 
 export default function BookGrid() {
     const [imagens, setImagens] = useState([])
+    const [isMouseCima, setIsMouseCima] = useState(false)
     useEffect(() =>{
         const produtos = async() =>{
             const response = await fetch('https://fakestoreapi.com/products');
@@ -13,7 +14,9 @@ export default function BookGrid() {
         }
         produtos()
     },[])
-
+    const apareceBotao = () =>{
+        !isMouseCima? setIsMouseCima(true): setIsMouseCima(false)
+    }
     return (
         <Container  maxWidth="xl">
             <Grid
@@ -27,8 +30,10 @@ export default function BookGrid() {
             imagens.map(data => (
                 <Grid item
                       key={`GridItem-${data.id}`} xs={12} sm={5} md={4} lg={2} xl={1}
-                >
-                   <BookCard data={data}/>
+                >  
+                    <div onMouseOver={apareceBotao}>
+                        <BookCard data={data} mouse={isMouseCima}/>
+                    </div>
                 </Grid>
             ))
         }
