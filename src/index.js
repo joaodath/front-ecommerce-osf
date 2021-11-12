@@ -9,7 +9,7 @@ import CartContextProvider from "./contexts/CartContext";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <CartContextProvider children={<App />}/>
+      <CartContextProvider children={<App />} />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
