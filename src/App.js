@@ -5,15 +5,18 @@ import Header from "./components/shared/Header/Header";
 import Footer from "./components/shared/Footer/Footer"
 import { RoutesComponents } from './routes/RoutesComponents'
 
+
 function App() {
   return (
-    <div className="App">
+    <div className="page-container">
+      <div className="content-wrap">
       <Header/>
       <Switch>
         <Route exact path="/" component={Home}/>
         <RoutesComponents />
       </Switch>
-      <Footer/>
+      </div>
+      <Footer/>      
     </div>
   );
 }
