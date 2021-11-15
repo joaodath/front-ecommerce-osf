@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../../api/Api";
+import { Api } from "../../Api/Api";
 import LinkButton from "../../components/LinkButton/LinkButton";
 
+
 export default function ViewUser(props) {
-  //   const id = props.match.params.id;
-  const id = 2;
+    const id = props.match.params.id;
   //   console.log("id: ", id, typeof id);
   //   console.log(props);
 
@@ -84,6 +84,15 @@ export default function ViewUser(props) {
 
       <div>
         <p> Telefone: {user.phonenumber} </p>
+      </div>
+      <div>
+        <p>Por favor, confirme suas informações:</p>
+        <LinkButton to={"/user/update/"+id} >
+          EDITAR
+        </LinkButton>
+        <LinkButton to={"/"} >
+          CONFIRMAR
+        </LinkButton>         
       </div>
     </div>
   );
