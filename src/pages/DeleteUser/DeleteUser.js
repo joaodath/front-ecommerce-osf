@@ -1,5 +1,5 @@
 import React from "react";
-import { Api } from "../../api/Api";
+import { Api } from "../../Api/Api";
 
 export default function DeleteUser(props) {
   //   const id = props.match.params.id;
