@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../../api/Api";
+import { Api } from "../../Api/Api";
 
 export default function UpdateUser(props) {
-  // const id = props.match.params.id;
-  const id = 2;
+  const id = props.match.params.id;
+  // const id = 2;
   console.log("ID: ", id);
   // div*12>label.form__label>input.form__input-text>p
 
@@ -73,7 +73,7 @@ export default function UpdateUser(props) {
       const id = body.id;
 
       // Verifique seus dados
-      //props.history.push(`/user/view/${id}`);
+      props.history.push(`/user/view/id/${id}`);
     } else {
       alert("Ops! Algo deu errado!");
     }
