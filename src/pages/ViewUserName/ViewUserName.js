@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../../api/Api";
-import LinkButton from "../../components/LinkButton/LinkButton";
+import { Api } from "../../Api/Api";
+// import LinkButton from "../../components/LinkButton/LinkButton";
 
 export default function ViewUserName(props) {
   //   const id = props.match.params.username;
