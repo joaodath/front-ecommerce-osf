@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Api } from "../../../services/Api/Api";
 import BookCard from "../BookCard/BookCard";
+import "./BooksList.scss";
 
 function BooksList() {
   const [books, setBooks] = useState([]);

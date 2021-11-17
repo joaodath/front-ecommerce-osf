@@ -1,18 +1,27 @@
 export const MockPromo = [
-    {
-        title: "Black Friday", 
-        image: "http://photos.picsum/1280/640"
-    },
-    {
-        title: "Best Sellers", 
-        image: "http://photos.picsum/1280/640"
-    },
-    {
-        title: "Hot Suggestions", 
-        image: "http://photos.picsum/1280/640"
-    },
-    {
-        title: "Hotsite Substore", 
-        image: "http://photos.picsum/1280/640"
-    }
-]
+  {
+    id: 1,
+    title: "Black Friday",
+    image: "http://picsum.photos/1200/320",
+  },
+  {
+    id: 2,
+    title: "Best Sellers",
+    image: "http://picsum.photos/1200/320",
+  },
+  {
+    id: 3,
+    title: "Holiday's Suggestions",
+    image: "http://picsum.photos/1200/320",
+  },
+  {
+    id: 4,
+    title: "Christimas Gifts",
+    image: "http://picsum.photos/1200/320",
+  },
+  {
+    id: 5,
+    title: "Hotsite/Substore",
+    image: "http://picsum.photos/1200/320",
+  },
+];

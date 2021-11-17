@@ -1,7 +1,6 @@
 import React from "react";
 import { useCart } from "../../hooks/useCart";
 import CartProducts from "../../components/structure/CartProducts/CartProducts";
-import AppContextProvider from "../../contexts/AppContext";
 
 function Cart() {
   const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } =
@@ -11,7 +10,7 @@ function Cart() {
       <h3>Carrinho</h3>
       <div className="wrapper__cartProducts">
         {cartItems.length > 0 ? (
-          <AppContextProvider children={<CartProducts />}/>
+          <CartProducts />
         ) : (
           <div>Your cart is empty</div>
         )}

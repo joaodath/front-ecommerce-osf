@@ -1,5 +1,7 @@
 import React from "react";
 import { useCart } from "../../../hooks/useCart";
+import { Button } from "@mui/material";
+import "./BookCard.scss";
 
 function BookCard({ book }) {
   const { addProduct, cartItems, increase } = useCart();
@@ -16,18 +18,16 @@ function BookCard({ book }) {
         />
       </p>
       <p>{book.title}</p>
-      <p>R$ {book.price}</p>
+      <p>Preço: R$ {book.price}</p>
 
       {isInCart(book) && (
-        <button type="button" onClick={() => increase(book)}>
-          Adicionar + 1
-        </button>
+        <Button variant="outlined" onClick={() => increase(book)}>Adicionar + 1</Button>
       )}
 
       {!isInCart(book) && (
-        <button type="button" onClick={() => addProduct(book)}>
+        <Button variant="outlined" onClick={() => addProduct(book)}>
           Adicionar
-        </button>
+        </Button>
       )}
     </div>
   );
