@@ -14,7 +14,8 @@ export default function CarouselItem(props) {
         alignContent:"center",
         alignItems: "center",
         justifyContent: "end",
-        color: "white"
+        color: "white",
+        zIndex: "tooltip"
       }}
     >
       <h2>{props.item.title}</h2>
