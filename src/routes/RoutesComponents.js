@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router";
-import { Home } from "../pages/Home/Home";
+import  Home  from "../pages/Home/Home";
 import CreateUser from "../pages/CreateUser/CreateUser";
 import DeleteUser from "../pages/DeleteUser/DeleteUser";
 import UpdateUser from "../pages/UpdateUser/UpdateUser";
