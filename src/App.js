@@ -7,8 +7,10 @@ import { RoutesComponents } from "./routes/RoutesComponents";
 import { theme } from "./style/theme";
 import { ThemeProvider } from "@material-ui/core";
 
+
 function App() {
   return (
+
     <div className="App">
       <ThemeProvider theme={theme}>
         <Header />
