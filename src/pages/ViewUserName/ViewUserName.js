@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../../api/Api";
+import { Api } from "../../Api/Api";
+import { Container } from "@mui/material";
+import Box from "@mui/material/Box";
+import { Grid } from "@material-ui/core";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import LinkButton from "../../components/LinkButton/LinkButton";
 
 export default function ViewUserName(props) {
-  //   const id = props.match.params.username;
-  const username = "Fael";
+  const id = props.match.params.id;
+  const username = props.match.params.username;
+
   //   console.log("id: ", id, typeof id);
-  //   console.log(props);
+    console.log("USERNAME:", username);
 
   const [user, setUser] = useState(undefined);
 
@@ -18,8 +24,8 @@ export default function ViewUserName(props) {
       );
 
       const results = await response.json();
-
-      setUser(results);
+        console.log(response)
+      setUser(results.json());
     };
 
     loadUser();
@@ -32,59 +38,264 @@ export default function ViewUserName(props) {
   console.log("userView:  ", user);
 
   return (
-    <div className="item">
-        
-      <div>
-        <p> Nome: {user.name} </p>
-      </div>
+    <div className="App">
+      <Typography
+        variant="h4"
+        gutterBottom
+        margin={8}
+        color="#404040"
+        component="div"
+      >
+        Confirme as Informações
+      </Typography>
 
-      <div>
-        <p> Nome de usuário: {user.username} </p>
-      </div>
+      <Container component="section" maxWidth="lg">
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { marginBottom: 3, width: "100%" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <Grid container spacing={3} justifyContent="center">
+            <Grid item xs={12} sm={7}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-read-only-input"
+                  label="NOME COMLETO"
+                  name="name"
+                  id="name"
+                  helperText="Nome sem abreviações"
+                  defaultValue={user.name}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> Email: {user.email} </p>
-      </div>
+            <Grid item xs={12} sm={5}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="NOME DE USUÁRIO"
+                  name="username"
+                  id="username"
+                  helperText="Apenas o nome de usuário. Ex: Aninha21"
+                  defaultValue={user.username}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      {/* <div>
-        <p> Nome: {user.password} </p>
-      </div> */}
+            <Grid item xs={12} sm={12}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="EMAIL"
+                  name="email"
+                  id="email"
+                  helperText="E-mail completo"
+                  defaultValue={user.email}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> Imagem de Perfil: {user.profilePhoto} </p>
-      </div>
+            <Grid item xs={12} sm={4}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="IMAGEM DE PERFIL"
+                  name="profilePhoto"
+                  id="profilePhoto"
+                  helperText="Insira o link da imagem"
+                  defaultValue={user.profilePhoto}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> Data de Nascimento: {user.birthDate} </p>
-      </div>
+            <Grid item xs={12} sm={4}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="Data de Nascimento"
+                  name="birthDate"
+                  id="birthDate"
+                  helperText="Formato: DD/MM/YYYY"
+                  defaultValue={user.birthDate}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> CPF: {user.cpf} </p>
-      </div>
+            <Grid item xs={12} sm={4}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="CPF"
+                  name="cpf"
+                  id="cpf"
+                  helperText="Informe apenas os números "
+                  defaultValue={user.cpf}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> CEP: {user.cep} </p>
-      </div>
+            <Grid item xs={12} sm={12}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="filled-textarea"
+                  label="ENDEREÇO"
+                  multiline
+                  name="address"
+                  id="address"
+                  maxRows={4}
+                  helperText="Rua, número, complemento e Bairro "
+                  defaultValue={user.address}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> País: {user.country} </p>
-      </div>
+            <Grid item xs={12} sm={4}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="CIDADE"
+                  name="city"
+                  id="city"
+                  helperText="Nome da cidade completo "
+                  defaultValue={user.city}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> Estado: {user.state} </p>
-      </div>
+            <Grid item xs={12} sm={4}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="ESTADO"
+                  name="state"
+                  id="state"
+                  helperText="Nome do estado. Não usar sigla. "
+                  defaultValue={user.state}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> Cidade: {user.city} </p>
-      </div>
+            <Grid item xs={12} sm={4}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="PAÍS"
+                  name="country"
+                  id="country"
+                  helperText="Nome do país sem abreviações "
+                  defaultValue={user.country}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> Endereço: {user.address} </p>
-      </div>
+            <Grid item xs={12} sm={6}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="CEP"
+                  name="cep"
+                  id="cep"
+                  helperText="Informe apenas os números "
+                  defaultValue={user.cep}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
 
-      <div>
-        <p> Telefone: {user.phonenumber} </p>
-      </div>
+            <Grid item xs={12} sm={6}>
+              <div>
+                <TextField
+                  required
+                  type="text"
+                  className="outlined-helperText"
+                  label="TELEFONE"
+                  name="phonenumber"
+                  id="phonenumber"
+                  helperText="Informe somente os números"
+                  defaultValue={user.phonenumber}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </div>
+            </Grid>
+
+            <div className="dv__button">
+              <LinkButton
+                to={"/user/update/" + id}
+                className="button button--user"
+              >
+                EDITAR
+              </LinkButton>
+            </div>
+
+            <div className="dv__button">
+              <LinkButton to={"/"} className="button button--user">
+                CONFIRMAR
+              </LinkButton>
+            </div>
+
+          </Grid>
+        </Box>
+      </Container>
+
     </div>
   );
 }

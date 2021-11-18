@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../../api/Api";
+import { parseISO, format } from 'date-fns'
+import { subHours, addDays } from 'date-fns';
+import { Api } from "../../Api/Api";
+import Box from "@mui/material/Box";
+import { Grid } from "@material-ui/core";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { Container } from "@mui/material";
 
 export default function UpdateUser(props) {
-  // const id = props.match.params.id;
-  const id = 2;
-  console.log("ID: ", id);
-  // div*12>label.form__label>input.form__input-text>p
+  const id = props.match.params.id;
 
   const [user, setUser] = useState(undefined);
+  
   console.log("USER: ", user);
 
   useEffect(() => {
@@ -25,15 +30,21 @@ export default function UpdateUser(props) {
     loadUser();
   }, [id]);
 
+  
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
+    const data_Brasileira = event.target.birthDate.value;
+    const data_Americana = data_Brasileira.split('/').reverse().join('-')
+    const data_Utc = parseISO(data_Americana)
+    const birthDate = subHours(data_Utc, 3).toISOString()
+    
+    
     const name = event.target.name.value;
     const username = event.target.username.value;
     const email = event.target.email.value;
-    const password = event.target.password.value;
     const profilePhoto = event.target.profilePhoto.value;
-    const birthDate = event.target.birthDate.value;
     const cpf = event.target.cpf.value;
     const cep = event.target.cep.value;
     const country = event.target.country.value;
@@ -41,12 +52,11 @@ export default function UpdateUser(props) {
     const city = event.target.city.value;
     const address = event.target.address.value;
     const phonenumber = event.target.phonenumber.value;
-
+    
     const payload = {
       name,
       username,
       email,
-      password,
       profilePhoto,
       birthDate,
       cpf,
@@ -57,246 +67,262 @@ export default function UpdateUser(props) {
       address,
       phonenumber,
     };
-
+    
     const response = await Api.buildApiPatchRequest(
       Api.updateUserUrl(id),
       payload,
       true,
-      // console.log("PAYLOAD:  ", payload)
-    );
-
-    const body = await response.json();
-    console.log("Body:  ", body)
-
-    if (response.status === 200) {
-      alert("Cadastro realizado com sucesso");
-      const id = body.id;
-
-      // Verifique seus dados
-      //props.history.push(`/user/view/${id}`);
-    } else {
-      alert("Ops! Algo deu errado!");
+      
+      );
+      
+      const body = await response.json();
+      console.log("Body:  ", body)
+      
+      if (response.status === 200) {
+        alert("Edição armazenada com sucesso");
+        const id = body.id;
+        
+        // Verifique seus dados
+        props.history.push(`/user/view/id/${id}`);
+      } else {
+        alert("Ops! Algo deu errado!");
+      }
+    };
+    
+    
+    if (!user) {
+      return <div>Loading...</div>;
     }
-  };
-
-  if (!user) {
-    return <div>Loading...</div>;
-  }
-
+    
+    const dateAmerican = format(parseISO(user.birthDate), "MM-dd-yyyy")
+    const dateUtc_M1 = addDays(new Date(dateAmerican), 1).toISOString()
+    const dataBrasil_brT =  format(parseISO(dateUtc_M1), "dd-MM-yyyy")
+    const dataBrasil_brB = dataBrasil_brT.split('-').join('/')
+    
+    
+    
   return (
-    <div>
-      <form className="form" onSubmit={handleSubmit}>
-        <div>
-          <label className="form__label" htmlFor="name">
-            Nome:
-          </label>
-        </div>
+    <div className="App">
+      <div>
+        <Typography
+          variant="h4"
+          gutterBottom
+          margin={8}
+          color="#404040"
+          component="div"
+        >
+          Edite as Informações
+        </Typography>
+        
+        <Container component="section" maxWidth="lg">
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{
+              "& .MuiTextField-root": { marginBottom: 3, width: "100%" },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <Grid container spacing={3} justifyContent="center">
+              <Grid item xs={12} sm={7}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="NOME COMLETO"
+                    name="name"
+                    id="name"
+                    helperText="Nome sem abreviações"
+                    defaultValue={user.name}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="name"
-            id="name"
-            defaultValue={user.name}
-          />
-        </div>
+              <Grid item xs={12} sm={5}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="NOME DE USUÁRIO"
+                    name="username"
+                    id="username"
+                    helperText="Apenas o nome de usuário. Ex: Aninha21"
+                    defaultValue={user.username}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <label className="form__label" htmlFor="username">
-            Nome de Usuário:
-          </label>
-        </div>
+              <Grid item xs={12} sm={12}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="EMAIL"
+                    name="email"
+                    id="email"
+                    helperText="E-mail completo"
+                    defaultValue={user.email}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="username"
-            id="username"
-            defaultValue={user.username}
-          />
-        </div>
 
-        <div>
-          <label htmlFor="email" className="form__label">
-            Email:
-          </label>
-        </div>
 
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="email"
-            id="email"
-            defaultValue={user.email}
-          />
-        </div>
+              <Grid item xs={12} sm={4}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="IMAGEM DE PERFIL"
+                    name="profilePhoto"
+                    id="profilePhoto"
+                    helperText="Insira o link da imagem"
+                    defaultValue={user.profilePhoto}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <label htmlFor="password" className="form__label">
-            Senha:
-          </label>
-        </div>
+              <Grid item xs={12} sm={4}>
+                <div>
+                  
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="Data de Nascimento"
+                    name="birthDate"
+                    id="birthDate"
+                    helperText="Formato: DD/MM/YYYY"
+                    defaultValue={dataBrasil_brB}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <input
-            type="password"
-            className="form__input-text"
-            name="password"
-            id="password"
-            defaultValue={user.password}
-          />
-        </div>
+              <Grid item xs={12} sm={4}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="CPF"
+                    name="cpf"
+                    id="cpf"
+                    helperText="Informe apenas os números "
+                    defaultValue={user.cpf}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <label htmlFor="profilePhoto" className="form__label">
-            Foto de Perfil:
-          </label>
-        </div>
+              <Grid item xs={12} sm={12}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="filled-textarea"
+                    label="ENDEREÇO"
+                    multiline
+                    name="address"
+                    id="address"
+                    maxRows={4}
+                    helperText="Rua, número, complemento e Bairro "
+                    defaultValue={user.address}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="profilePhoto"
-            id="profilePhoto"
-            defaultValue={user.profilePhoto}
-          />
-        </div>
+              <Grid item xs={12} sm={4}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="CIDADE"
+                    name="city"
+                    id="city"
+                    helperText="Nome da cidade completo "
+                    defaultValue={user.city}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <label htmlFor="birthDate" className="form__label">
-            Data de Nascimento:
-          </label>
-        </div>
+              <Grid item xs={12} sm={4}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="ESTADO"
+                    name="state"
+                    id="state"
+                    helperText="Nome do estado. Não usar sigla. "
+                    defaultValue={user.state}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="birthDate"
-            id="birthDate"
-            defaultValue={user.birthDate}
-          />
-        </div>
-        <div>
-          <label htmlFor="cpf" className="form__label">
-            CPF:
-          </label>
-        </div>
+              <Grid item xs={12} sm={4}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="PAÍS"
+                    name="country"
+                    id="country"
+                    helperText="Nome do país sem abreviações "
+                    defaultValue={user.country}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="cpf"
-            id="cpf"
-            defaultValue={user.cpf}
-          />
-        </div>
+              <Grid item xs={12} sm={6}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="CEP"
+                    name="cep"
+                    id="cep"
+                    helperText="Informe apenas os números "
+                    defaultValue={user.cep}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <label htmlFor="cep" className="form__label">
-            CEP:
-          </label>
-        </div>
+              <Grid item xs={12} sm={6}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-helperText"
+                    label="TELEFONE"
+                    name="phonenumber"
+                    id="phonenumber"
+                    helperText="Informe somente os números"
+                    defaultValue={user.phonenumber}
+                  />
+                </div>
+              </Grid>
 
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="cep"
-            id="cep"
-            defaultValue={user.cep}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="country" className="form__label">
-            País:
-          </label>
-        </div>
-
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="country"
-            id="country"
-            defaultValue={user.country}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="state" className="form__label">
-            Estado:
-          </label>
-        </div>
-
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="state"
-            id="state"
-            defaultValue={user.state}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="city" className="form__label">
-            Cidade:
-          </label>
-        </div>
-
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="city"
-            id="city"
-            defaultValue={user.city}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="address" className="form__label">
-            Endereço:
-          </label>
-        </div>
-
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="address"
-            id="address"
-            defaultValue={user.address}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="phonenumber" className="form__label">
-            Telefone:
-          </label>
-        </div>
-
-        <div>
-          <input
-            type="text"
-            className="form__input-text"
-            name="phonenumber"
-            id="phonenumber"
-            defaultValue={user.phonenumber}
-          />
-        </div>
-
-        <div>
-          <input className="form__submit" type="submit" value="SALVAR" />
-        </div>
-      </form>
+              <Grid item xs={12} sm={6}>
+                <div>
+                  <TextField
+                    className="contained"
+                    type="submit"
+                    value="SALVAR"
+                  />
+                </div>
+              </Grid>
+            </Grid>
+          </Box>
+        </Container>
+      </div>
     </div>
   );
 }
