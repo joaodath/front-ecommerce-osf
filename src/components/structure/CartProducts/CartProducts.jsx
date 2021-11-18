@@ -1,5 +1,5 @@
 import React from "react";
-import { CartItem } from "../CartItem/CartItem";
+import CartItem from "../CartItem/CartItem";
 import { useCart } from "../../../hooks/useCart";
 
 function CartProducts() {
@@ -7,8 +7,8 @@ function CartProducts() {
 
   return (
     <div className="container__cartItems">
-      {cartItems.map((product) => (
-        <CartItem key={`bookId_${product.book.id}`} product={product} />
+      {cartItems.map((book) => (
+        <CartItem key={`bookId_${book.id}`} book={book} />
       ))}
     </div>
   );

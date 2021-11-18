@@ -1,12 +1,13 @@
 import React from "react";
 import { useCart } from "../../hooks/useCart";
-import { CartProducts } from "../../components/structure/CartProducts/CartProducts";
+import CartProducts from "../../components/structure/CartProducts/CartProducts";
 
 function Cart() {
   const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } =
     useCart();
   return (
     <div>
+      <h3>Carrinho</h3>
       <div className="wrapper__cartProducts">
         {cartItems.length > 0 ? (
           <CartProducts />

@@ -1,21 +1,32 @@
-import React from "react";
-import TextField from "@mui/material";
+import React, { useState } from "react";
+import { TextField, Button } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 function Searchbar() {
-  const handleSubmit = (e) => {
+  const [searchKey, setSearchKey] = useState("");
+
+  const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Teste");
+    console.log(searchKey);
   };
 
   return (
-    <form className="searchbar" onSubmit={handleSubmit}>
+    <div
+      className="searchbar"
+      style={{ display: "flex", alignContent: "center", alignItems: "center" }}
+    >
       <TextField
-        id="outlined-basic"
         className="search-field"
+        id="searchField"
         name="searchField"
+        placeholder="Busque pelo Título"
+        onChange={(e) => setSearchKey(e.target.value)}
+        sx={{ width: "30rem" }}
       />
-      <input type="text" className="search-btn" value="search" />
-    </form>
+      <Button onClick={handleSearch} sx={{ height: "2rem", width: "2rem" }}>
+        <SearchIcon sx={{ height: "2rem", width: "2rem" }} />
+      </Button>
+    </div>
   );
 }
 

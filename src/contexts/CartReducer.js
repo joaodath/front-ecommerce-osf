@@ -11,6 +11,7 @@ export const sumItems = (cartItems) => {
     (total, product) => total + product.quantity,
     0
   );
+  console.log(cartItems.map((item) => item.quantity));
   let total = cartItems
     .reduce((total, product) => total + product.price * product.quantity, 0)
     .toFixed(2);
@@ -51,15 +52,18 @@ export const CartReducer = (state, action) => {
         ...sumItems(state.cartItems),
         cartItems: [...state.cartItems],
       };
+
     case "DECREASE":
       state.cartItems[
         state.cartItems.findIndex((item) => item.id === action.payload.id)
       ].quantity--;
+
       return {
         ...state,
         ...sumItems(state.cartItems),
         cartItems: [...state.cartItems],
       };
+
     case "CHECKOUT":
       return {
         cartItems: [],

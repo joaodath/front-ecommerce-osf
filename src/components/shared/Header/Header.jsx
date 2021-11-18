@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../../structure/Navbar/Navbar";
 
 function Header() {
-    return (
-        <div>
-            <h3>Header</h3>
-        </div>
-    )
+  return (
+    <div className="container__header" style={{ margin: "2rem 0 .5rem 0" }}>
+      <Navbar />
+    </div>
+  );
 }
 
-export default Header
+export default Header;
