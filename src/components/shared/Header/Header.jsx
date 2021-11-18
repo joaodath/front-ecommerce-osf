@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Navbar from "../../structure/Navbar/Navbar";
 import { Api } from "../../../Api/Api";
 import { JwtHandler } from "../../../jwt-handler/JwtHandler";
 import { Link } from "react-router-dom";
@@ -38,6 +39,9 @@ export default function Header(props) {
   loadUser();
 
   return (
+        <div className="container__header" style={{ margin: "2rem 0 .5rem 0" }}>
+      <Navbar />
+    </div>
     <header className="header">
       <br />
       <Link to="/">Home</Link>
