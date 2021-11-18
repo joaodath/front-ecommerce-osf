@@ -14,7 +14,6 @@ function BooksList() {
     const loadBooks = async () => {
       const response = await Api.getRequest(Api.getAllBooksUrl());
       const result = await response.json();
-      console.log(response);
       setBooks(result);
     };
 

@@ -6,13 +6,16 @@ import { JwtHandler } from "../../../jwt-handler/JwtHandler";
 import { useCart } from "../../../hooks/useCart";
 import { Link, useHistory } from "react-router-dom";
 import { Avatar } from "@mui/material";
-import { Api } from "../../../Api/Api";
+// import { Api } from "../../../Api/Api";
+import useUser from "../../../hooks/useUser";
 
 function Navbar() {
   const { itemCount } = useCart();
+  const { isLogged, setIsLogged } = useUser();
 
-  const history = useHistory();
-  const [isLogged, setIsLogged] = useState(JwtHandler.isJwtValid);
+  // const history = useHistory();
+  setIsLogged(!!JwtHandler.isJwtValid());
+  console.log(isLogged);
 
   useEffect(() => {
     const handleOnJwtChange = () => {
@@ -24,23 +27,21 @@ function Navbar() {
     };
   }, []);
 
-  console.log("IsLogged", JwtHandler.getJwt());
-
   // const body = undefined;
-  const pass = JwtHandler.getJwt();
+  // const pass = JwtHandler.getJwt();
 
-  const loadUser = async () => {
-    const response = await Api.buildApiGetRequest(Api.loginTestUrl(pass), true);
+  // const loadUser = async () => {
+  //   const response = await Api.buildApiGetRequest(Api.loginTestUrl(pass), true);
 
-    const body = await response.json();
+  //   const body = await response.json();
 
-    if (response.status !== 200) {
-      history.push("/logout");
-    } else {
-    }
-  };
+  //   if (response.status !== 200) {
+  //     history.push("/logout");
+  //   } else {
+  //   }
+  // };
 
-  loadUser();
+  // loadUser();
 
   return (
     <div
