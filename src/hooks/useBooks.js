@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { appContext } from "../contexts/AppContext";
+import { AppContext } from "../contexts/AppContext";
 
 export default function useBooks() {
-  const { books, setBooks } = useContext(appContext);
+  const { books, setBooks } = useContext(AppContext);
 
   return {
     books,

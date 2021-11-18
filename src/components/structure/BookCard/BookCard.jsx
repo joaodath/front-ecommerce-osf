@@ -29,6 +29,7 @@ function BookCard({ book }) {
           Adicionar
         </Button>
       )}
+      <Button variant="contained">Detalhes</Button>
     </div>
   );
 }

@@ -6,9 +6,6 @@ function AppContextProvider({ children }) {
   const [books, setBooks] = useState([]);
   const [user, setUser] = useState(undefined);
 
-  const storage = localStorage.getItem("user" | undefined)
-  setUser(storage)
-
   const appContextValues = {
     user,
     setUser,
