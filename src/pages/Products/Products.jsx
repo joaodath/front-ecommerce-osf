@@ -12,7 +12,7 @@ import { height } from '@material-ui/system'
 
 const useStyles = makeStyles({
     root:{
-        background: '#667273',
+        background: 'transparent',
         borderRadius: 10,
         color: 'red',
         '& p': {
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
             visibility: 'hidden'
         },
         '& .MuiPaper-root':{
-            background: 'grey',
+            background: 'transparent',
             height: 500
         },
         '& img': {

@@ -3,8 +3,8 @@ export default function Item(props)
 {
     return (
         <Paper>
-            <img src={props.item.name} alt="a"/>
-            <p>{props.item.description}</p>
+            <img src={props.item.image} alt="a"/>
+            <p>{props.item.title}</p>
 
             <Button className="CheckButton">
                 Check it out!
