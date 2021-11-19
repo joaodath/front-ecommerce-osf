@@ -55,7 +55,7 @@ function Navbar() {
     >
       <div className="wrapper__logo">
         <Link to="/">
-          <h1>Bookstore</h1>
+          <h1>S t u n t z</h1>
         </Link>
       </div>
       <div className="wrapper__searchbar">

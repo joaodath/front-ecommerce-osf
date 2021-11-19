@@ -35,7 +35,8 @@ export default function Login(props) {
   return (
     <div>
       <form className="form__login" onSubmit={handleSubmit}>
-        <div>
+        <div style={{ margin: "0 0 3rem 0"}}>
+          <h2 style={{ fontFamily: "Montserrat"}}>Login</h2> 
           {/* <img src={logo} className="img__logo__login" /> */}
         </div>
 
