@@ -11,10 +11,10 @@ import useUser from "../../../hooks/useUser";
 
 function Navbar() {
   const { itemCount } = useCart();
-  const { isLogged, setIsLogged } = useUser();
+  const { user, isLogged, setIsLogged } = useUser();
 
   // const history = useHistory();
-  setIsLogged(!!JwtHandler.isJwtValid());
+  // setIsLogged(!!JwtHandler.isJwtValid());
   console.log(isLogged);
 
   useEffect(() => {
@@ -73,12 +73,12 @@ function Navbar() {
           </Badge>
         </div>
         <div className="wrapper__userBtn">
-          <Avatar
+          <Link to={isLogged? (`/user/view/id/${user}`) : ('/login')} ><Avatar
             sx={{ heigth: "2rem", width: "2.5rem" }}
             src={
               "https://merics.org/sites/default/files/styles/ct_team_member_default/public/2020-04/avatar-placeholder.png?h=ecfff384&itok=Vhm0RCa3"
             }
-          />
+          /></Link>
           {isLogged ? (
             <Link to="/logout">Logout</Link>
           ) : (

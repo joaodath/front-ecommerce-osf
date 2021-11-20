@@ -27,29 +27,32 @@ function BooksList() {
   }, []);
 
   useEffect(() => {
-    console.log(categoryName)
+    console.log(categoryName);
+  }, [categoryName]);
 
-  }, [categoryName])
-
-  return (
-    <>
-      <div className="wrapper__categories-buttons">
-        {categories.map((category) => (
-          <Button
-            key={`category_${category.id}`}
-            onClick={() => setCategoryName(category.name)}
-          >
-            {category.name}
-          </Button>
-        ))}
-      </div>
-      <div className="wrapper__booksDisplay">
-        {books.map((book) => (
-          <BookCard key={`bookId_${book.id}`} book={book} />
-        ))}
-      </div>
-    </>
-  );
+  if (!categories || !books) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <>
+        <div className="wrapper__categories-buttons">
+          {categories.map((category) => (
+            <Button
+              key={`category_${category.id}`}
+              onClick={() => setCategoryName(category.name)}
+            >
+              {category.name}
+            </Button>
+          ))}
+        </div>
+        <div className="wrapper__booksDisplay">
+          {books.map((book) => (
+            <BookCard key={`bookId_${book.id}`} book={book} />
+          ))}
+        </div>
+      </>
+    );
+  }
 }
 
 export default BooksList;

@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
+import useUser from "../../hooks/useUser";
 import "./login.css";
 
 // import logo from "../../assets/images/logo.png";
 
 export default function Login(props) {
+  const { setUser } = useUser();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -25,6 +27,8 @@ export default function Login(props) {
     if (response.status === 201) {
       const pass = body.access_token;
       JwtHandler.setJwt(pass);
+      const usernameId = JwtHandler.getJwtPayload().username;
+      setUser(usernameId);
       // console.log("Logado")
       props.history.push(`/`);
     } else {
@@ -35,8 +39,8 @@ export default function Login(props) {
   return (
     <div>
       <form className="form__login" onSubmit={handleSubmit}>
-        <div style={{ margin: "0 0 3rem 0"}}>
-          <h2 style={{ fontFamily: "Montserrat"}}>Login</h2> 
+        <div style={{ margin: "0 0 3rem 0" }}>
+          <h2 style={{ fontFamily: "Montserrat" }}>Login</h2>
           {/* <img src={logo} className="img__logo__login" /> */}
         </div>
 
