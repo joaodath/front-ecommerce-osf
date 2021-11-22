@@ -1,13 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './Products.css'
-import Searchbar from '../../components/structure/Searchbar/Searchbar'
 import CarouselComp from '../../components/structure/Carousel/Carousel'
 import BookInfo from '../../components/structure/BookInfo/BookInfo'
+import BookDetails from '../../components/structure/BookInfo/BookDetails'
 import BookGrid from './BookGrid'
 import {Grid} from "@material-ui/core"
 import { makeStyles } from '@material-ui/styles';
-import { height } from '@material-ui/system'
 import DetalheProdutos from './ProductsComponents/DetalheProdutos'
 
 
@@ -42,6 +40,7 @@ function Products() {
                 <CarouselComp className={classes.root}/>
                 <BookGrid/>
                 <BookInfo/>
+                <BookDetails/>
                 <DetalheProdutos/>
             </Grid>
     )

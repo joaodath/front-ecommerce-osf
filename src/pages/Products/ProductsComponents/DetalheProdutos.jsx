@@ -111,7 +111,7 @@ const Item2 = styled(Button)(({ theme }) => ({
     height: '12%',
     marginTop: '4%'
   }))
-  const ButtonOk = styled('Button')(()=>({
+  const ButtonOk = styled('button')(()=>({
     backgroundColor: 'rgb(175, 1, 0)',
     border: 'none',
     borderRadius: 5,
@@ -140,6 +140,7 @@ const Item2 = styled(Button)(({ theme }) => ({
 export default function DetalheProdutos() {
   const [qtd, setQtd] = React.useState(0);
   const [livro, setLivro] = React.useState({})
+  const [cep, setCep] = React.useState('')
   const acrescenta1 = () => {
     setQtd(q => q + 1);
   }
@@ -196,8 +197,10 @@ export default function DetalheProdutos() {
                       <ContainerFrete>
                           <Img src="https://img.icons8.com/windows/32/000000/in-transit--v2.png"/>
                           <TypographyFrete>Calcular frete:</TypographyFrete>
-                          <TextFieldFrete variant='outlined' type='number'/>
-                          <ButtonOk>Ok</ButtonOk>
+                          <form>
+                            <TextFieldFrete variant='outlined' type='number'/>
+                            <ButtonOk type="submit">Ok</ButtonOk>
+                          </form>
                       </ContainerFrete>
                     </GridCentral>
                   </ConteinerPrincipal>

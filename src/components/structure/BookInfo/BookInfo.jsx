@@ -36,51 +36,64 @@ export default function BookInfo() {
     const [linha, setLinha] = React.useState([])
   React.useEffect(()=>{
     const obtemLivro = async() =>{
-      const data = await fetch('https://backend-osf-release-0-2-i5xlpw.herokuapp.com/books/id/12')
+      const data = await fetch('https://backend-osf-release-0-3-h28izb.herokuapp.com/books/id/1')
       const book = await data.json();
       setLivro(book);
     }
     obtemLivro()
   },[])
-
-  function createData(nome, descricao) {
-    return { nome, descricao};
-  }
-  
-  const rows = 
-    Object.keys(livro).map((i) => {
-      if (i === 'title'){
-        createData('Titulo', livro[i])
-      } //else if(i === 'edition'){
-      //   return createData('Edição', livro[i])
-      // }
-    });
     
-    if(livro){
-      console.log(rows)
-    }
-  
   return (
     <Box sx={{
       p: 2,
       bgcolor: 'background.default',
-      display: 'block',
-      margin: 'auto'
+      display: 'flex',
+      justifyContent: 'center'
     }}>
       <TableContainer component={Paper}>
-        <Table sx={{ width: '80vw' , height: '100vh', display: 'block', margin: '0 auto'}} aria-label="customized table">
+        <Table sx={{ width: '80%' , height: '100vh'}} aria-label="customized table">
             <TableHead>
             <StyledTableRow>
                   <StyledTableCell  variant='head' align="center" colSpan={2} component="th" scope="row">Ficha técnica</StyledTableCell>
             </StyledTableRow>
             </TableHead>
           <TableBody>
-            {rows.map(row => (
-              <StyledTableRow key={row.nome}>
-                <StyledTableCell colSpan={3} component="tr" scope="row">{row.nome}</StyledTableCell>
-                <StyledTableCell colSpan={3} align="left">{row.descricao}</StyledTableCell>
+              <StyledTableRow >
+                <StyledTableCell colSpan={3} component="tr" scope="row">Autor</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{livro.author}</StyledTableCell>
               </StyledTableRow>
-            ))}
+              <StyledTableRow >
+                <StyledTableCell colSpan={3} component="tr" scope="row">ISBN</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{livro.isbn13}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow >
+                <StyledTableCell colSpan={3} component="tr" scope="row">Título</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{livro.title}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow >
+                <StyledTableCell colSpan={3} component="tr" scope="row">Editora</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{livro.publisher}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow >
+                <StyledTableCell colSpan={3} component="tr" scope="row">Edição</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{livro.edition}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow >
+                <StyledTableCell colSpan={3} component="tr" scope="row">Peso</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{livro.weight}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow >
+                <StyledTableCell colSpan={3} component="tr" scope="row">Largura</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{livro.weight}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow >
+                <StyledTableCell colSpan={3} component="tr" scope="row">Profundidade</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{livro.length}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow >
+                <StyledTableCell colSpan={3} component="tr" scope="row">Avaliação</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{livro.score}</StyledTableCell>
+              </StyledTableRow>
           </TableBody>
         </Table>
       </TableContainer>
