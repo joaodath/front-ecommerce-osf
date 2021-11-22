@@ -8,7 +8,7 @@ import "./login.css";
 // import logo from "../../assets/images/logo.png";
 
 export default function Login(props) {
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -28,8 +28,7 @@ export default function Login(props) {
       const pass = body.access_token;
       JwtHandler.setJwt(pass);
       const usernameId = JwtHandler.getJwtPayload().username;
-      setUser(usernameId);
-      // console.log("Logado")
+      localStorage.setItem("userId", usernameId)
       props.history.push(`/`);
     } else {
       // Implementar

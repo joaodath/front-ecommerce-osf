@@ -18,7 +18,7 @@ export const Api = {
 
   readAllUserUrl: () => Api.baseUrl + "/user/all",  
 
-  readByIdUserUrl: (id) => Api.baseUrl + "/user/id/" + id,
+  readUserUrl: () => Api.baseUrl + "/user/",
 
   readByUsernameUserUrl: (username) => Api.baseUrl + "/user/" + username,
 
@@ -29,6 +29,20 @@ export const Api = {
   inativeUserUrl: (username) => Api.baseUrl + "/user/disable/" + username,
 
   deleteUserUrl: (id) => Api.baseUrl + "/user/" + id,
+
+  // Endpoint - Products - Books
+
+  createBookUrl: () => Api.baseUrl + "/book/new",
+
+  readAllBookUrl: () => Api.baseUrl + "/book/all",
+
+  readBookByIdUrl: (id) => Api.baseUrl + "/book/id/" + id,
+
+  readBooksByCategoryUrl: () => Api.baseUrl + "/book/category",
+
+  // Endpoint - Categories
+
+  readAllCategoryUrl: () => Api.baseUrl + "/category/all",
 
   //jwt
 
