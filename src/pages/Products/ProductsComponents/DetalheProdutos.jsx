@@ -5,7 +5,8 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { TextField} from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -26,19 +27,21 @@ const Item2 = styled(Button)(({ theme }) => ({
     ...theme.typography.body2,
     textAlign: 'center',
     color: 'white',
-    width: '30%',
+    width: '100%',
     borderRadius: 10
   }));
   const Grid3 = styled(Grid)(() => ({
     backgroundColor: 'white',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    border: '1px solid gray'
   }));
   const Grid4 = styled(Grid)(() => ({
     backgroundColor: 'white',
     display:'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10
+    borderRadius: '10px 0 0 10px',
+    border: '1px solid gray'
   }));
   const Grid5 = styled(Grid)(() => ({
     display:'flex',
@@ -76,7 +79,7 @@ const Item2 = styled(Button)(({ theme }) => ({
   const GridContainer = styled(Grid)(() => ({
     display: 'flex',
     justifyContent: 'flex-end',
-    width: '30%'
+    width: '100%'
   }));
   const GridCentral = styled('div')(() => ({
     display: 'flex',
@@ -84,13 +87,59 @@ const Item2 = styled(Button)(({ theme }) => ({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: '100%'
+    height: '100%',
   }));
   const Img = styled('img')(() => ({
+    maxHeight: '100vh',
+    width: 'auto'
   }));
+
+  const TextFieldFrete = styled(TextField)(() => ({
+      padding: '0 0 0 0 ',
+  }));
+
+  const TypographyFrete = styled(Typography)(() => ({
+    fontSize: '13px',
+}));
+
+  const ContainerFrete = styled('div')(() =>({
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    height: '12%',
+    marginTop: '4%'
+  }))
+  const ButtonOk = styled('Button')(()=>({
+    backgroundColor: 'rgb(175, 1, 0)',
+    border: 'none',
+    borderRadius: 5,
+    color: 'white',
+    padding: '15px',
+    marginLeft: 10
+  }))
+
+  const ConteinerPrincipal = styled('div')(()=>({
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    widht: '100%',
+    height: '100%'
+  }))
+  const ContainerImg = styled('div')(()=>({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    // widht: '100%',
+    // height: '100%',
+    marginRight: 100
+  }))
 
 export default function DetalheProdutos() {
   const [qtd, setQtd] = React.useState(0);
+  const [livro, setLivro] = React.useState({})
   const acrescenta1 = () => {
     setQtd(q => q + 1);
   }
@@ -99,6 +148,14 @@ export default function DetalheProdutos() {
       setQtd(q => q - 1);
     }
   }
+  React.useEffect(()=>{
+    const obtemLivro = async() =>{
+      const data = await fetch('https://backend-osf-release-0-2-i5xlpw.herokuapp.com/books/id/12')
+      const book = await data.json();
+      setLivro(book);
+    }
+    obtemLivro()
+  },[])
   return (
             <Box
               sx={{
@@ -108,30 +165,42 @@ export default function DetalheProdutos() {
             >
                 
                 <Item sx={{width: '100vw',
-                height: '80vh', margin: '0 auto', display: 'block'}}>
-                  <GridCentral container>
-                  {/* <Img src="https://img.icons8.com/windows/32/000000/in-transit--v2.png"/> */}
-                    <GridContainer>
-                      <GridInfos container>
-                        <TypographyTitle item>Titulo Aqui</TypographyTitle>
-                        <Typography item color='gray'>autor:<TypographyInfo>Fulano</TypographyInfo></Typography>
-                        <Typography item color='gray'>editora:<TypographyInfo>Beltrano</TypographyInfo></Typography>
-                        <TypographyRed item >R$ 70,00</TypographyRed>
-                      </GridInfos>
-                    </GridContainer>
-                    <Grid2 container>
-                      <Grid4 Item xs={2.5}>
-                        <Typography color='black'>{qtd}</Typography>
-                      </Grid4>
-                      <Grid3 Item xs={1.5}>
-                        <Typography color='black' onClick={acrescenta1}>+</Typography>
-                        <Typography color='black' onClick={subtrai1}>-</Typography>
-                      </Grid3>
-                      <Grid5 Item xs={8}>
-                        <Typography>Comprar</Typography>
-                      </Grid5>
-                    </Grid2>
-                  </GridCentral>
+                height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
+                  <ConteinerPrincipal>
+                    <ContainerImg>
+                      <Img src={livro.coverImg}/>
+                    </ContainerImg>
+                    <GridCentral>
+                      <GridContainer item >
+                        <GridInfos container>
+                          <TypographyTitle item>{livro.title}</TypographyTitle>
+                          <Typography item color='gray'>autor:<TypographyInfo>Fulano</TypographyInfo></Typography>
+                          <Typography item color='gray'>editora:<TypographyInfo>Beltrano</TypographyInfo></Typography>
+                          <TypographyRed item >R$ {livro.price},00</TypographyRed>
+                        </GridInfos>
+                      </GridContainer>
+
+                      <Grid2 container>
+                        <Grid4 Item xs={2.5}>
+                          <Typography color='black'>{qtd}</Typography>
+                        </Grid4>
+                        <Grid3 Item xs={1.5}>
+                          <Typography color='black' onClick={acrescenta1}>+</Typography>
+                          <Typography color='black' onClick={subtrai1}>-</Typography>
+                        </Grid3>
+                        <Grid5 Item xs={8}>
+                          <Typography>Comprar</Typography>
+                        </Grid5>
+                      </Grid2>
+                      <Divider/>
+                      <ContainerFrete>
+                          <Img src="https://img.icons8.com/windows/32/000000/in-transit--v2.png"/>
+                          <TypographyFrete>Calcular frete:</TypographyFrete>
+                          <TextFieldFrete variant='outlined' type='number'/>
+                          <ButtonOk>Ok</ButtonOk>
+                      </ContainerFrete>
+                    </GridCentral>
+                  </ConteinerPrincipal>
                 </Item>
             </Box>
   );

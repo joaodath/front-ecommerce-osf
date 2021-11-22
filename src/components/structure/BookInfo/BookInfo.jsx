@@ -7,6 +7,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -28,38 +29,61 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(nome, descricao) {
-  return { nome, descricao};
-}
 
-const rows = [
-  createData('Autor', 'Token'),
-  createData('ISBN', 237569054998954),
-  createData('Título', 'O senhor dos anéis'),
-  createData('Editor', 'Best Seler'),
-  createData('Idioma', 'Inglês'),
-];
 
 export default function BookInfo() {
+    const [livro, setLivro] = React.useState({})
+    const [linha, setLinha] = React.useState([])
+  React.useEffect(()=>{
+    const obtemLivro = async() =>{
+      const data = await fetch('https://backend-osf-release-0-2-i5xlpw.herokuapp.com/books/id/12')
+      const book = await data.json();
+      setLivro(book);
+    }
+    obtemLivro()
+  },[])
+
+  function createData(nome, descricao) {
+    return { nome, descricao};
+  }
+  
+  const rows = 
+    Object.keys(livro).map((i) => {
+      if (i === 'title'){
+        createData('Titulo', livro[i])
+      } //else if(i === 'edition'){
+      //   return createData('Edição', livro[i])
+      // }
+    });
+    
+    if(livro){
+      console.log(rows)
+    }
+  
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 , maxHeight: 100 }} aria-label="customized table">
-          <TableHead>
-          <StyledTableRow>
-                <StyledTableCell  variant='head' align="center" colSpan={2} component="th" scope="row">Ficha técnica</StyledTableCell>
-          </StyledTableRow>
-          </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.nome}>
-              <StyledTableCell component="th" scope="row">
-                {row.nome}
-              </StyledTableCell>
-              <StyledTableCell colSpan={3} align="left">{row.descricao}</StyledTableCell>
+    <Box sx={{
+      p: 2,
+      bgcolor: 'background.default',
+      display: 'block',
+      margin: 'auto'
+    }}>
+      <TableContainer component={Paper}>
+        <Table sx={{ width: '80vw' , height: '100vh', display: 'block', margin: '0 auto'}} aria-label="customized table">
+            <TableHead>
+            <StyledTableRow>
+                  <StyledTableCell  variant='head' align="center" colSpan={2} component="th" scope="row">Ficha técnica</StyledTableCell>
             </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+            </TableHead>
+          <TableBody>
+            {rows.map(row => (
+              <StyledTableRow key={row.nome}>
+                <StyledTableCell colSpan={3} component="tr" scope="row">{row.nome}</StyledTableCell>
+                <StyledTableCell colSpan={3} align="left">{row.descricao}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 }
