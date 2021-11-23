@@ -47,14 +47,16 @@ const Item2 = styled(Button)(({ theme }) => ({
     display:'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    color: 'white',
+    color: 'black',
     width: '66.6%',
-    backgroundColor: 'rgb(175, 1, 0)',
+    borderColor: 'black',
+    borderRadius: 0,
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
     '&:hover':{
       color: 'white',
-      backgroundColor: 'black'
+      backgroundColor: 'rgb(175, 1, 0)',
+      border: 'none'
     }
   }));
   const TypographyRed = styled(Typography)(() => ({
@@ -195,7 +197,7 @@ export default function DetalheProdutos() {
                           <Typography color='black' onClick={acrescenta1}>+</Typography>
                           <Typography color='black' onClick={subtrai1}>-</Typography>
                         </Grid3>
-                        <ButtonComprar Item xs={8}>
+                        <ButtonComprar variant='outlined' Item xs={8}>
                             Comprar
                         </ButtonComprar>
                       </Grid2>
