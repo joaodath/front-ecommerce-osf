@@ -51,7 +51,11 @@ const Item2 = styled(Button)(({ theme }) => ({
     width: '66.6%',
     backgroundColor: 'rgb(175, 1, 0)',
     borderTopRightRadius: 5,
-    borderBottomRightRadius: 5
+    borderBottomRightRadius: 5,
+    '&:hover':{
+      color: 'white',
+      backgroundColor: 'black'
+    }
   }));
   const TypographyRed = styled(Typography)(() => ({
     color: 'rgb(175, 1, 0)',
@@ -128,7 +132,7 @@ const Item2 = styled(Button)(({ theme }) => ({
     justifyContent: 'space-around',
     alignItems: 'center',
     widht: '100%',
-    height: '100%'
+    height: '100%',
   }))
   const ContainerImg = styled('div')(()=>({
     display: 'flex',
