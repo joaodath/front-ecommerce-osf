@@ -209,7 +209,7 @@ export default function DetalheProdutos() {
                       <ContainerFrete>
                           <Img src="https://img.icons8.com/windows/32/000000/in-transit--v2.png"/>
                           <TypographyFrete>Calcular frete:</TypographyFrete>
-                          <form>
+                          <form style={{display: 'flex', justifyContent:'center'}}>
                             <TextFieldFrete variant='outlined' type='number'/>
                             <ButtonOk variant='outlined' type="submit">Ok</ButtonOk>
                           </form>
