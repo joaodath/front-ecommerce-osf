@@ -119,13 +119,17 @@ const Item2 = styled(Button)(({ theme }) => ({
     height: '12%',
     marginTop: '4%'
   }))
-  const ButtonOk = styled('button')(()=>({
-    backgroundColor: 'rgb(175, 1, 0)',
-    border: 'none',
+  const ButtonOk = styled(Button)(()=>({
+    borderColor: 'black',
     borderRadius: 5,
-    color: 'white',
+    color: 'black',
     padding: '15px',
-    marginLeft: 10
+    marginLeft: 10,
+    '&:hover': {
+      backgroundColor: 'rgb(175, 1, 0)',
+      color: 'white',
+      border: 'none'
+    }
   }))
 
   const ConteinerPrincipal = styled('div')(()=>({
@@ -207,7 +211,7 @@ export default function DetalheProdutos() {
                           <TypographyFrete>Calcular frete:</TypographyFrete>
                           <form>
                             <TextFieldFrete variant='outlined' type='number'/>
-                            <ButtonOk type="submit">Ok</ButtonOk>
+                            <ButtonOk variant='outlined' type="submit">Ok</ButtonOk>
                           </form>
                       </ContainerFrete>
                     </GridCentral>
