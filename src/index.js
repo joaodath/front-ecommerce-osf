@@ -8,15 +8,15 @@ import CartContextProvider from "./contexts/CartContext";
 import AppContextProvider from "./contexts/AppContext";
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <AppContextProvider>
         <CartContextProvider>
           <App />
         </CartContextProvider>
       </AppContextProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 

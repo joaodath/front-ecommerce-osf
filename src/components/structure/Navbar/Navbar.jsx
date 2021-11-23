@@ -6,13 +6,16 @@ import { JwtHandler } from "../../../jwt-handler/JwtHandler";
 import { useCart } from "../../../hooks/useCart";
 import { Link, useHistory } from "react-router-dom";
 import { Avatar } from "@mui/material";
-import { Api } from "../../../Api/Api";
+// import { Api } from "../../../Api/Api";
+import useUser from "../../../hooks/useUser";
 
 function Navbar() {
   const { itemCount } = useCart();
+  const { user, isLogged, setIsLogged } = useUser();
 
-  const history = useHistory();
-  const [isLogged, setIsLogged] = useState(JwtHandler.isJwtValid);
+  // const history = useHistory();
+  // setIsLogged(!!JwtHandler.isJwtValid());
+  console.log(isLogged);
 
   useEffect(() => {
     const handleOnJwtChange = () => {
@@ -24,23 +27,21 @@ function Navbar() {
     };
   }, []);
 
-  console.log("IsLogged", JwtHandler.getJwt());
-
   // const body = undefined;
-  const pass = JwtHandler.getJwt();
+  // const pass = JwtHandler.getJwt();
 
-  const loadUser = async () => {
-    const response = await Api.buildApiGetRequest(Api.loginTestUrl(pass), true);
+  // const loadUser = async () => {
+  //   const response = await Api.buildApiGetRequest(Api.loginTestUrl(pass), true);
 
-    const body = await response.json();
+  //   const body = await response.json();
 
-    if (response.status !== 200) {
-      history.push("/logout");
-    } else {
-    }
-  };
+  //   if (response.status !== 200) {
+  //     history.push("/logout");
+  //   } else {
+  //   }
+  // };
 
-  loadUser();
+  // loadUser();
 
   return (
     <div
@@ -54,7 +55,7 @@ function Navbar() {
     >
       <div className="wrapper__logo">
         <Link to="/">
-          <h1>Bookstore</h1>
+          <h1>S t u n t z</h1>
         </Link>
       </div>
       <div className="wrapper__searchbar">
@@ -72,12 +73,14 @@ function Navbar() {
           </Badge>
         </div>
         <div className="wrapper__userBtn">
-          <Avatar
+          {/* <Link to={isLogged? (`/user/view/id/${user}`) : ('/login')} > */}
+            <Avatar
             sx={{ heigth: "2rem", width: "2.5rem" }}
             src={
               "https://merics.org/sites/default/files/styles/ct_team_member_default/public/2020-04/avatar-placeholder.png?h=ecfff384&itok=Vhm0RCa3"
             }
           />
+          {/* </Link> */}
           {isLogged ? (
             <Link to="/logout">Logout</Link>
           ) : (

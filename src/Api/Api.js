@@ -1,7 +1,8 @@
 import { JwtHandler } from "../jwt-handler/JwtHandler";
 
 export const Api = {
-  baseUrl: "https://backend-osf-release-0-2-i5xlpw.herokuapp.com",
+  baseUrl: "https://backend-osf-release-0-3-h28izb.herokuapp.com",
+  // "https://backend-osf-release-0-2-i5xlpw.herokuapp.com",
     // "http://localhost:8000",
   // "https://backend-osf-release-0-1-ifzzla.herokuapp.com",
 
@@ -17,7 +18,7 @@ export const Api = {
 
   readAllUserUrl: () => Api.baseUrl + "/user/all",  
 
-  readByIdUserUrl: (id) => Api.baseUrl + "/user/id/" + id,
+  readUserUrl: () => Api.baseUrl + "/user/",
 
   readByUsernameUserUrl: (username) => Api.baseUrl + "/user/" + username,
 
@@ -28,6 +29,20 @@ export const Api = {
   inativeUserUrl: (username) => Api.baseUrl + "/user/disable/" + username,
 
   deleteUserUrl: (id) => Api.baseUrl + "/user/" + id,
+
+  // Endpoint - Products - Books
+
+  createBookUrl: () => Api.baseUrl + "/book/new",
+
+  readAllBookUrl: () => Api.baseUrl + "/book/all",
+
+  readBookByIdUrl: (id) => Api.baseUrl + "/book/id/" + id,
+
+  readBooksByCategoryUrl: () => Api.baseUrl + "/book/category",
+
+  // Endpoint - Categories
+
+  readAllCategoryUrl: () => Api.baseUrl + "/category/all",
 
   //jwt
 
