@@ -43,10 +43,12 @@ const Item2 = styled(Button)(({ theme }) => ({
     borderRadius: '10px 0 0 10px',
     border: '1px solid gray'
   }));
-  const Grid5 = styled(Grid)(() => ({
+  const ButtonComprar = styled(Button)(() => ({
     display:'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    color: 'white',
+    width: '66.6%',
     backgroundColor: 'rgb(175, 1, 0)',
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5
@@ -151,7 +153,7 @@ export default function DetalheProdutos() {
   }
   React.useEffect(()=>{
     const obtemLivro = async() =>{
-      const data = await fetch('https://backend-osf-release-0-2-i5xlpw.herokuapp.com/books/id/12')
+      const data = await fetch('https://backend-osf-release-0-3-h28izb.herokuapp.com/books/id/1')
       const book = await data.json();
       setLivro(book);
     }
@@ -189,9 +191,9 @@ export default function DetalheProdutos() {
                           <Typography color='black' onClick={acrescenta1}>+</Typography>
                           <Typography color='black' onClick={subtrai1}>-</Typography>
                         </Grid3>
-                        <Grid5 Item xs={8}>
-                          <Typography>Comprar</Typography>
-                        </Grid5>
+                        <ButtonComprar Item xs={8}>
+                            Comprar
+                        </ButtonComprar>
                       </Grid2>
                       <Divider/>
                       <ContainerFrete>

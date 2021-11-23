@@ -47,11 +47,12 @@ export default function BookInfo() {
     <Box sx={{
       p: 2,
       bgcolor: 'background.default',
-      display: 'flex',
-      justifyContent: 'center'
+      display: 'block',
+      margin: '0 auto',
+      width: '80vw'
     }}>
       <TableContainer component={Paper}>
-        <Table sx={{ width: '80%' , height: '100vh'}} aria-label="customized table">
+        <Table sx={{ width: '100%' , height: '100vh'}} aria-label="customized table">
             <TableHead>
             <StyledTableRow>
                   <StyledTableCell  variant='head' align="center" colSpan={2} component="th" scope="row">Ficha técnica</StyledTableCell>
