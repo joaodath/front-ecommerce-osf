@@ -73,12 +73,14 @@ function Navbar() {
           </Badge>
         </div>
         <div className="wrapper__userBtn">
-          <Link to={isLogged? (`/user/view/id/${user}`) : ('/login')} ><Avatar
+          {/* <Link to={isLogged? (`/user/view/id/${user}`) : ('/login')} > */}
+            <Avatar
             sx={{ heigth: "2rem", width: "2.5rem" }}
             src={
               "https://merics.org/sites/default/files/styles/ct_team_member_default/public/2020-04/avatar-placeholder.png?h=ecfff384&itok=Vhm0RCa3"
             }
-          /></Link>
+          />
+          {/* </Link> */}
           {isLogged ? (
             <Link to="/logout">Logout</Link>
           ) : (
