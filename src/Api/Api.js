@@ -32,13 +32,13 @@ export const Api = {
 
   // Endpoint - Products - Books
 
-  createBookUrl: () => Api.baseUrl + "/book/new",
+  createBookUrl: () => Api.baseUrl + "/books/new",
 
-  readAllBookUrl: () => Api.baseUrl + "/book/all",
+  readAllBookUrl: () => Api.baseUrl + "/books/all",
 
-  readBookByIdUrl: (id) => Api.baseUrl + "/book/id/" + id,
+  readBookByIdUrl: (id) => Api.baseUrl + "/books/id/" + id,
 
-  readBooksByCategoryUrl: () => Api.baseUrl + "/book/category",
+  readBooksByCategoryUrl: () => Api.baseUrl + "/books/category",
 
   // Endpoint - Categories
 

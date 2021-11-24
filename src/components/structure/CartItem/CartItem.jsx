@@ -2,7 +2,7 @@ import React from "react";
 import { useCart } from "../../../hooks/useCart";
 import { Button } from "@mui/material";
 import { AddBox } from "@mui/icons-material";
-import { Delete } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 import { IndeterminateCheckBox } from "@mui/icons-material";
 
 function CartItem({ book }) {
@@ -11,16 +11,21 @@ function CartItem({ book }) {
   return (
     <div
       className="wrapper__cartItem"
-      style={{ display: "flex", alignItems: "center", columnGap: "3rem" }}
+      style={{ display: "flex", alignItems: "center", columnGap: "2rem" }}
     >
+      <div>
+        <Button>
+          <Close onClick={() => removeProduct(book)} />
+        </Button>
+      </div>
       <div>
         <img
           src={book.coverImg}
           alt={`${book.title}'s cover`}
-          style={{ width: "10rem" }}
+          style={{ width: "5rem" }}
         />
       </div>
-      <div>
+      <div style={{ width: "20rem" }}>
         <p>{book.title}</p>
 
         <p>
@@ -43,11 +48,6 @@ function CartItem({ book }) {
         </p>
 
         <p>R$ {book.price}</p>
-        <div>
-          <Button onClick={() => removeProduct(book)}>
-            <Delete />
-          </Button>
-        </div>
       </div>
     </div>
   );

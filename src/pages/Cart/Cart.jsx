@@ -33,7 +33,7 @@ function Cart() {
           <p>{total}</p>
         </div>
         
-        <div className="wrapper__buttons">
+        <div className="wrapper__buttons"  style={{ display: "flex", flexDirection: "column" }}>
           <Button variant="outlined" onClick={handleCheckout}>
             CHECKOUT
           </Button>
