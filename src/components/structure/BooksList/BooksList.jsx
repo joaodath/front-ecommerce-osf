@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../../../services/Api/Api";
+import { Api } from "../../../Api/Api";
 import BookCard from "../BookCard/BookCard";
 import useBooks from "../../../hooks/useBooks";
 import "./BooksList.scss";

@@ -29,6 +29,19 @@ export const Api = {
 
   deleteUserUrl: (id) => Api.baseUrl + "/user/" + id,
 
+  getAllBooksUrl: () => Api.baseUrl+"/books/all",
+  createBookUrl: () => Api.baseUrl + "/books/new",
+
+  readAllBookUrl: () => Api.baseUrl + "/book/all",
+
+  readBookByIdUrl: (id) => Api.baseUrl + "/books/id/" + id,
+
+  readBooksByCategoryUrl: () => Api.baseUrl + "/books/category",
+
+  getCategoriesUrl: () => Api.baseUrl+"/category/all",
+
+  getRequest: (url) => fetch(url),
+
   //jwt
 
   authHeader: () => ({
@@ -71,3 +84,5 @@ export const Api = {
       headers: auth ? new Headers(Api.authHeader()) : undefined,
     }),
 };
+
+

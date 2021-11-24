@@ -1,0 +1,45 @@
+
+
+.detail-container{
+width:80%;
+    margin:0 auto;
+    background:#e8f1f359;
+    padding:4rem;
+    border-radius: 1rem;
+    box-shadow: 0px 6px 8px 3px rgba(0,0,0,0.34);
+}
+
+.detail-container__header{
+    display: flex;
+    margin: 2rem auto;
+
+    img{
+        height:400px;
+        margin-right: 1rem;
+    }
+}
+.detail-container__sinopsis{
+text-align: justify;
+
+h2{
+    margin-bottom:2rem;
+    text-align:center;
+}
+}
+
+
+.header-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left:1rem;
+    text-align: left;
+    
+    h2{
+margin-bottom: 1rem;
+}
+.blue{
+    color:#1d3557;
+}
+}
+

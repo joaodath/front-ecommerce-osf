@@ -31,7 +31,7 @@ export const RoutesComponents = () => {
       <Route path="/user/view/username/:username" component={ViewUserName} />
       <Route path="/user/inative/:id" component={InativeUser} />
       <Route path="/user/remove/:id" component={DeleteSoftUser} />
-      <Route path="/details/book/:id" component={BookDetails} />
+      <Route path="/book/details/:id" component={BookDetails} />
       <Route path="/user/delete/:id" component={DeleteUser} />
       {/* <Route path="book/create" component={CreateBook} /> */}
       <Route path="/cart" component={Cart} />
