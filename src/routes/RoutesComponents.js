@@ -11,6 +11,7 @@ import Logout from "../pages/Logout/Logout";
 import ManagerUser from "../pages/Managet/ManagerUser";
 import InativeUser from "../pages/InativeCreate/InativeUser";
 import DeleteSoftUser from "../pages/DeleteSoftUser/DeleteSoftUser";
+import BookDetails from "../pages/BookDetails/BookDetails";
 import Cart from "../pages/Cart/Cart";
 // import { Book } from "../components/Book/CreateBook";
 
@@ -30,6 +31,7 @@ export const RoutesComponents = () => {
       <Route path="/user/view/username/:username" component={ViewUserName} />
       <Route path="/user/inative/:id" component={InativeUser} />
       <Route path="/user/remove/:id" component={DeleteSoftUser} />
+      <Route path="/details/book/:id" component={BookDetails} />
       <Route path="/user/delete/:id" component={DeleteUser} />
       {/* <Route path="book/create" component={CreateBook} /> */}
       <Route path="/cart" component={Cart} />

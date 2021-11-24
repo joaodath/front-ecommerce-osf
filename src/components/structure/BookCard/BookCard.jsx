@@ -1,6 +1,7 @@
 import React from "react";
 import { useCart } from "../../../hooks/useCart";
 import { Button } from "@mui/material";
+import {Link} from 'react-router-dom'
 import "./BookCard.scss";
 
 function BookCard({ book }) {
@@ -29,7 +30,7 @@ function BookCard({ book }) {
           Adicionar
         </Button>
       )}
-      <Button variant="contained">Detalhes</Button>
+      <Link to={`book/details/${book.id}`}><Button variant="contained">Detalhes</Button></Link>
     </div>
   );
 }
