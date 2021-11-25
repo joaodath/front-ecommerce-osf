@@ -2,6 +2,7 @@ import React from "react";
 import { useCart } from "../../hooks/useCart";
 import CartProducts from "../../components/structure/CartProducts/CartProducts";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } =
@@ -26,26 +27,26 @@ function Cart() {
       </div>
 
       <div className="wrapper__cart-details" style={{ gridColumn: "2/3" }}>
-        
         <div className="wrapper__cart-sumarize">
           <p>Total Items: {itemCount}</p>
           <h4>Total:</h4>
           <p>{total}</p>
         </div>
-        
-        <div className="wrapper__buttons"  style={{ display: "flex", flexDirection: "column" }}>
-          <Button variant="outlined" onClick={handleCheckout}>
-            CHECKOUT
-          </Button>
+
+        <div
+          className="wrapper__buttons"
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <Link to="checkout">
+            <Button variant="outlined">CHECKOUT</Button>{" "}
+          </Link>
           <Button variant="contained" onClick={clearCart}>
             CLEAR
           </Button>
         </div>
-        </div>
-        
-        </div>
+      </div>
+    </div>
   );
-
 }
 
 export default Cart;

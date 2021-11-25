@@ -50,10 +50,12 @@ export default function CreateUser(props) {
       phonenumber,
     };
 
+    console.log(payload)
+
     const response = await Api.buildApiPostRequest(
       Api.createUserUrl(),
       payload,
-      true,
+      false,
       console.log("PAYLOAD:  ", payload)
     );
 
@@ -61,8 +63,7 @@ export default function CreateUser(props) {
 
     if (response.status === 201) {
       alert("Cadastro realizado com sucesso");
-      const id = body.id;
-      props.history.push(`/user/view/id/${id}`);
+      props.history.push(`/`);
     } else {
       alert("Ops! Algo deu errado!");
     }

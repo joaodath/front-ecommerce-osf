@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Api } from "../../../services/Api/Api";
+import { Api } from "../../../Api/Api";
 import BookCard from "../BookCard/BookCard";
 import useBooks from "../../../hooks/useBooks";
 import "./BooksList.scss";
@@ -12,13 +12,13 @@ function BooksList() {
 
   useEffect(() => {
     const loadBooks = async () => {
-      const response = await Api.getRequest(Api.getAllBooksUrl());
+      const response = await Api.buildApiGetRequest(Api.readAllBookUrl())
       const result = await response.json();
       setBooks(result);
     };
 
     const loadCategories = async () => {
-      const response = await Api.getRequest(Api.getCategoriesUrl());
+      const response = await Api.buildApiGetRequest(Api.readAllCategoryUrl());
       const result = await response.json();
       setCategories(result);
     };

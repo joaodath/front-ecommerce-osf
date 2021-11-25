@@ -12,6 +12,7 @@ import ManagerUser from "../pages/Managet/ManagerUser";
 import InativeUser from "../pages/InativeCreate/InativeUser";
 import DeleteSoftUser from "../pages/DeleteSoftUser/DeleteSoftUser";
 import Cart from "../pages/Cart/Cart";
+import Checkout from "../pages/Checkout/Checkout";
 // import { Book } from "../components/Book/CreateBook";
 
 export const RoutesComponents = () => {
@@ -33,6 +34,7 @@ export const RoutesComponents = () => {
       <Route path="/user/delete/:id" component={DeleteUser} />
       {/* <Route path="book/create" component={CreateBook} /> */}
       <Route path="/cart" component={Cart} />
+      <Route path="/checkout" component={Checkout} />
     </>
   );
 };

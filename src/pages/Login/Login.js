@@ -29,6 +29,7 @@ export default function Login(props) {
       JwtHandler.setJwt(pass);
       const usernameId = JwtHandler.getJwtPayload().username;
       localStorage.setItem("userId", usernameId)
+      
       props.history.push(`/`);
     } else {
       // Implementar
