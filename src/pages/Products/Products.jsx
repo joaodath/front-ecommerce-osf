@@ -8,7 +8,7 @@ import {Grid} from "@material-ui/core"
 import { makeStyles } from '@material-ui/styles';
 import DetalheProdutos from './ProductsComponents/DetalheProdutos'
 import CreateBook from './CreateBook'
-
+import UpdateBook from './UpdateBook'
 
 const useStyles = makeStyles({
     root:{
@@ -44,7 +44,7 @@ function Products() {
             //     <BookDetails/>
             //     <DetalheProdutos/>
             // </Grid>
-            <CreateBook/>
+            <UpdateBook/>
     )
 }
 

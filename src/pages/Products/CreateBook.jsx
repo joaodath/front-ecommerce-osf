@@ -1,4 +1,4 @@
-import { TextField, Grid, FormControlLabel, Checkbox, Radio, RadioGroup , Box, Button, Typography} from '@material-ui/core'
+import { TextField, Grid, FormControlLabel, Checkbox, Radio, RadioGroup , Box, Button, Typography, Paper} from '@material-ui/core'
 import { textAlign } from '@material-ui/system';
 import { styled } from '@mui/material/styles';
 import React from 'react'
@@ -44,9 +44,9 @@ const handleSubmit = async(e) =>{
     const price = +e.target.price.value;
     const discountCheck = e.target.desconto.checked;
     const inventoryAmount = +e.target.inventoryAmount.value
-    const author= e.target.author.value;
-    const category= e.target.category.value;
-    const publisher = e.target.publisher.value;
+    const author= e.target.author.value || "";
+    const category= e.target.category.value || "";
+    const publisher = e.target.publisher.value || " ";
 
     const payload = {
         title,
@@ -79,7 +79,6 @@ const handleSubmit = async(e) =>{
         body: JSON.stringify(payload),
       })
 
-      console.log(response)
   
 }
 const ButtonCriar = styled(Button)(() =>({
@@ -94,44 +93,51 @@ const ButtonCriar = styled(Button)(() =>({
 }))
 function CreateBook() {
     return (
-        <Box component="form" onSubmit={handleSubmit}>
-            <Typography>Cadastro de livros</Typography>
-            <Grid container justifyContent="center">
-                <Grid Item xs={4} sm={4}>
-                    <TextField variant='outlined' label="Título" name="title"  style={{margin: 10,  width: '80%'}}/>
-                    <TextField variant='outlined' label="Idioma" name="language" style={{margin: 10,  width: '80%'}}/>
-                    <TextField variant='outlined' label="Edição" type='number' name="edition" style={{margin: 10,  width: '80%'}}/>
-                    <TextField variant='outlined' label="Descrição" name="description" style={{margin: 10,  width: '80%'}}/>
-                    <TextField variant='outlined' label="Capa" name="coverImg" style={{margin: 10,  width: '80%'}}/>
-                    <TextField variant='outlined' label="Altura" type='number' name="height" style={{margin: 10,  width: '80%'}}/>
-                    <TextField variant='outlined' label="Largura" type='number' name="width" style={{margin: 10,  width: '80%'}}/>
+        <Paper elevation={3} xs={{display: 'flex', justifyContent: 'center', width: '100vw'}} >
+            <Box component="form" onSubmit={handleSubmit} sx={{
+                width: '90%',
+                display: 'block',
+                margin: '0 auto',
+                '& .MuiTextField-root': { m: 1, width: '25ch' },
+            }}>
+                <Typography>Cadastro de livros</Typography>
+                <Grid container justifyContent="center">
+                    <Grid Item xs={4} sm={4}>
+                        <TextField required variant='outlined' label="Título" name="title"  style={{margin: 10,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="Idioma" name="language" style={{margin: 10,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="Edição" type='number' name="edition" style={{margin: 10,  width: '80%'}}/>
+                        <TextField required multiline maxRows={3} variant='outlined' label="Descrição" name="description" style={{margin: 10,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="Capa" name="coverImg" style={{margin: 10,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="Altura" type='number' name="height" style={{margin: 10,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="Largura" type='number' name="width" style={{margin: 10,  width: '80%'}}/>
+                    </Grid>
+                    <Grid Item xs={4} sm={4}>
+                        <TextField required variant='outlined' label="Profundidade" type='number' name="length" style={{margin: 10,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="Peso" type='number' name="weight" style={{margin: 10,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="ISBN13" type='number' name="isbn13" style={{margin: 10 ,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="ISBN10" type='number' name="isbn10" style={{margin: 10 ,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="Avaliação" type='number' name="score" style={{margin: 10 ,  width: '80%'}}/>
+                        <TextField required variant='outlined' label="Preço" type='number' name="price" style={{margin: 10, width: '80%'}}/>
+                        <TextField required variant='outlined' label="Quantidade" type='number' name="inventoryAmount" style={{margin: 10, width: '80%'}}/>
+                    </Grid>
+                    <Grid Item xs={4} sm={4}>
+                        <TextField  variant='outlined' label="Autor" name="author" style={{margin: 10, width: '80%'}}/>   
+                        <TextField  variant='outlined' label="Catergoria" name="category" style={{margin: 10, width: '80%'}}/>
+                        <TextField  variant='outlined' label="Editora" name="publisher" style={{margin: 10, width: '80%'}}/>
+                        <div style={{ display: 'flex', flexDirection: 'column',justifyContent: 'center', alignItems: 'flex-start' , width: '80%', paddingLeft: 50}}>
+                            <RadioGroup name='tipo'>
+                                <FormControlLabel control={<Radio  />}  value="hardCover" label="Capa dura"/>
+                                <FormControlLabel control={<Radio />} value="ebook" label="E-book" />
+                            </RadioGroup>
+                            <FormControlLabel control={<Checkbox  name="desconto" />} label="Desconto"/>
+                        </div>
+                        <ButtonCriar  variant='outlined' type="submit">
+                            CADASTRAR
+                        </ButtonCriar>
+                    </Grid>
                 </Grid>
-                <Grid Item xs={4} sm={4}>
-                    <TextField variant='outlined' label="Profundidade" type='number' name="length" style={{margin: 10,  width: '80%'}}/>
-                    <TextField variant='outlined' label="Peso" type='number' name="weight" style={{margin: 10,  width: '80%'}}/>
-                    <TextField variant='outlined' label="ISBN13" type='number' name="isbn13" style={{margin: 10 ,  width: '80%'}}/>
-                    <TextField variant='outlined' label="ISBN10" type='number' name="isbn10" style={{margin: 10 ,  width: '80%'}}/>
-                    <TextField variant='outlined' label="Avaliação" type='number' name="score" style={{margin: 10 ,  width: '80%'}}/>
-                    <TextField variant='outlined' label="Preço" type='number' name="price" style={{margin: 10, width: '80%'}}/>
-                    <TextField variant='outlined' label="Quantidade" type='number' name="inventoryAmount" style={{margin: 10, width: '80%'}}/>
-                </Grid>
-                <Grid Item xs={4} sm={4}>
-                    <TextField variant='outlined' label="Autor" name="author" style={{margin: 10, width: '80%'}}/>   
-                    <TextField variant='outlined' label="Catergoria" name="category" style={{margin: 10, width: '80%'}}/>
-                    <TextField variant='outlined' label="Editora" name="publisher" style={{margin: 10, width: '80%'}}/>
-                    <div style={{ display: 'flex', flexDirection: 'column',justifyContent: 'center', alignItems: 'flex-start' , width: '80%', paddingLeft: 50}}>
-                        <RadioGroup name='tipo'>
-                            <FormControlLabel control={<Radio  />}  value="hardCover" label="Capa dura"/>
-                            <FormControlLabel control={<Radio />} value="ebook" label="E-book" />
-                        </RadioGroup>
-                        <FormControlLabel control={<Checkbox  name="desconto" />} label="Desconto"/>
-                    </div>
-                    <ButtonCriar  variant='outlined' type="submit">
-                        CADASTRAR
-                    </ButtonCriar>
-                </Grid>
-            </Grid>
-        </Box>
+            </Box>
+        </Paper>
     )
 }
 
