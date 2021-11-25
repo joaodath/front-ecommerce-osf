@@ -9,7 +9,7 @@ function BookCard({ book }) {
   const isInCart = (book) => !!cartItems.find((item) => item.id === book.id);
 
   return (
-    <div className="container__bookCard">
+    <div className="container__bookCard" style={{ maxWidth: "12rem" }}>
       <p>
         <img
           src={book.coverImg}
