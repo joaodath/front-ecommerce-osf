@@ -7,6 +7,7 @@ import BookGrid from './BookGrid'
 import {Grid} from "@material-ui/core"
 import { makeStyles } from '@material-ui/styles';
 import DetalheProdutos from './ProductsComponents/DetalheProdutos'
+import CreateBook from './CreateBook'
 
 
 const useStyles = makeStyles({
@@ -36,13 +37,14 @@ const useStyles = makeStyles({
 function Products() {
     const classes = useStyles()
     return (
-            <Grid justifyContent>
-                <CarouselComp className={classes.root}/>
-                <BookGrid/>
-                <BookInfo/>
-                <BookDetails/>
-                <DetalheProdutos/>
-            </Grid>
+            // <Grid justifyContent>
+            //     <CarouselComp className={classes.root}/>
+            //     <BookGrid/>
+            //     <BookInfo/>
+            //     <BookDetails/>
+            //     <DetalheProdutos/>
+            // </Grid>
+            <CreateBook/>
     )
 }
 
