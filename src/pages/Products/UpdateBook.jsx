@@ -69,7 +69,7 @@ const handleSubmit = async(e) =>{
         publisher
     }
 
-    const response = await fetch('https://backend-osf-release-0-4-zallyo.herokuapp.com/books/id/1', {
+    const response = await fetch('https://backend-osf-release-0-4-zallyo.herokuapp.com/books/1', {
         method: "PATCH",
         headers: new Headers({
           "Content-type": "application/json",
