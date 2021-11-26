@@ -1,15 +1,9 @@
-.wrapper__booksDisplay {
+.container__booksDisplay {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-between;
     margin: 2rem 3.5rem 2rem 3.5rem;
     column-gap: 3rem;
     row-gap: 3rem;
-}
-
-.wrapper__categories-buttons {
-    display: flex;
-    justify-content: center;
-    column-gap: 3rem;
 }

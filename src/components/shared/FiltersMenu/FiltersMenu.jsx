@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import "./FiltersMenu.scss";
 
 function FiltersMenu(props) {
-  const { books, setBooks } = useBooks();
+  const { setBooks } = useBooks();
   const [filter, setFilter] = useState("");
   const [authors, setAuthors] = useState([]);
   const [publishers, setPublishers] = useState([]);
@@ -46,41 +46,85 @@ function FiltersMenu(props) {
 
   const isFilter = (f) => f === filter;
 
+  const loadBooksByCategory = (category) => {
+    const loadBooks = async () => {
+      const response = await Api.buildApiGetRequest(
+        Api.readBooksByCategoryUrl(category),
+        false
+      );
+      const result = await response.json();
+      setBooks(result[0].books);
+      console.log(result);
+    };
+    loadBooks();
+  };
+  const loadBooksByAuthor = (author) => {
+    const loadBooks = async () => {
+      const response = await Api.buildApiGetRequest(
+        Api.readBooksByAuthorUrl(author),
+        false
+      );
+      const result = await response.json();
+      setBooks(result[0].books);
+      console.log(result);
+    };
+    loadBooks();
+  };
+
+  const loadBooksByPublisher = (publisher) => {
+    const loadBooks = async () => {
+      const response = await Api.buildApiGetRequest(
+        Api.readBooksByPublisherUrl(publisher),
+        false
+      );
+      const result = await response.json();
+      setBooks(result[0].books);
+      console.log(result);
+    };
+    loadBooks();
+  };
+
   return (
     <div className="container__filterMenu">
-      <h3>Selecione um Filtro:</h3>
+      <h4>Filtrar por:</h4>
+      <br />
       <Button onClick={() => setFilter("category")}>Categorias</Button>
       <Button onClick={() => setFilter("author")}>Autores</Button>
       <Button onClick={() => setFilter("publisher")}>Editoras</Button>
-      
+
+      <br />
       <hr />
+      <br />
 
       <div className="wrapper__filters">
         {isFilter("category") &&
           categories.map((category) => (
-            <Button key={`category_${category.id}`}>{category.name}</Button>
+            <Button
+              key={`category_${category.id}`}
+              onClick={() => loadBooksByCategory(category.name)}
+            >
+              {category.name}
+            </Button>
           ))}
         {isFilter("author") &&
           authors.map((author) => (
-            <Button key={`author_${author.id}`}>{author.name}</Button>
+            <Button
+              key={`author_${author.id}`}
+              onClick={() => loadBooksByAuthor(author.name)}
+            >
+              {author.name}
+            </Button>
           ))}
         {isFilter("publisher") &&
           publishers.map((publisher) => (
-            <Button key={`publisher_${publisher.id}`}>{publisher.name}</Button>
+            <Button
+              key={`publisher_${publisher.id}`}
+              onClick={() => loadBooksByPublisher(publisher.name)}
+            >
+              {publisher.name}
+            </Button>
           ))}
       </div>
-
-      {/* <div className="wrapper__filters">
-        {authors.map((author) => (
-          <Button key={`author_${author.id}`}>{author.name}</Button>
-        ))}
-      </div>
-
-      <div className="wrapper__filters">
-        {publishers.map((publisher) => (
-          <Button key={`publisher_${publisher.id}`}>{publisher.name}</Button>
-        ))}
-      </div> */}
     </div>
   );
 }

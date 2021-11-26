@@ -41,6 +41,8 @@ export const Api = {
 
   readBookByIdUrl: (id) => Api.baseUrl + "/books/id/" + id,
 
+  readBookByTitle: (title) => Api.baseUrl + `/books/title/${title}`,
+  
   readBooksByCategoryUrl: (category) => Api.baseUrl + `/books/category/${category}`,
   
   readBooksByAuthorUrl: (author) => Api.baseUrl + `/books/author/${author}`,
