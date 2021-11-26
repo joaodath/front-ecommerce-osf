@@ -1,7 +1,7 @@
 import { JwtHandler } from "../jwt-handler/JwtHandler";
 
 export const Api = {
-  baseUrl: "https://backend-osf-release-0-4-zallyo.herokuapp.com",
+  baseUrl: process.env.REACT_APP_API_URL,
   // "https://backend-osf-5.herokuapp.com",
   // "https://backend-osf-release-0-4-zallyo.herokuapp.com",
   // "https://backend-osf-release-0-3-h28izb.herokuapp.com",
