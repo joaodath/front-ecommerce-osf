@@ -20,15 +20,14 @@ export default function Header(props) {
     };
   }, []);
 
-  console.log("IsLogged", JwtHandler.getJwt());
 
-  // const body = undefined;
   const pass = JwtHandler.getJwt();
 
   const loadUser = async () => {
     const response = await Api.buildApiGetRequest(Api.loginTestUrl(pass), true);
 
     const body = await response.json();
+ 
 
     if (response.status !== 200) {
       history.push("/logout");
@@ -39,21 +38,23 @@ export default function Header(props) {
   loadUser();
 
   return (
-        <div className="container__header" style={{ margin: "2rem 0 .5rem 0" }}>
-      <Navbar />
-    </div>
-    <header className="header">
-      <br />
-      <Link to="/">Home</Link>
-      <br />
+    <div className="header">
+      <div className="container__header" style={{ margin: "2rem 0 .5rem 0" }}>
+        <Navbar />
+      </div>
+      <header className="header">
+        <br />
+        <Link to="/">Home</Link>
+        <br />
 
-      {isLogged ? (
-        <Link to="/logout">Logout</Link>
-      ) : (
-        <Link to="/login">Login</Link>
-      )}
-      <br />
-      <br />
-    </header>
+        {isLogged ? (
+          <Link to="/logout">Logout</Link>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
+        <br />
+        <br />
+      </header>
+    </div>
   );
 }

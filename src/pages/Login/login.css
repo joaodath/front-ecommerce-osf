@@ -1,5 +1,22 @@
+
+
+.form__area-login {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  justify-self: revert;
+  justify-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html, body {
+  height: 100vh;
+}
+
 .form__login {
-  background-color: #000;
+  background-color: #fff;
   width: 100vw;
   height: 100vh;
   margin-bottom: 18px;
@@ -7,19 +24,20 @@
   flex-direction: column;
   justify-self: center;
   justify-items: center;
-  justify-content: center;
+
   text-align: center;
+
 }
 
 .form__label__login {
   font-family: "Segoe UI";
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
-  color: #fff;
+  color: #404040;
 }
 
 .form__input-text__login {
-  /* display: flex; */
+
   font-family: "Segoe UI";
   font-size: 16px;
   font-weight: 400;
@@ -32,7 +50,7 @@
   margin-bottom: 1.8em;
   margin-top: 1.2em;
   padding: 0.5em 1em;
-  width: 80%;
+  width: 40%;
 }
 
 .img__logo__login {
@@ -41,27 +59,21 @@
 }
 
 
-a {
-  text-decoration: none;
-}
-
 .form__submit__button--login {
+  display: flex;
   border: none;
   border-radius: 0.25em;
-  background-color: #3593d1;
+  background-color: #1d3557;
   color: #fff;
   cursor: pointer;
   margin: 1.4em 0;
   padding: 1em 1em;
-  display: flex;
   margin-left: auto;
   margin-right: auto;
   text-decoration: none;
   transition: all 0.3s;
-
-
   justify-content: center;
-  width: 75%;
+  width: 40%;
 }
 
 .form__submit__button--login:hover {
@@ -69,4 +81,143 @@ a {
   box-shadow: 0 0px 3px #3593d1;
   color: white;
 }
+
+
+.cadastrar__link {
+  font-size: 14px;
+  font-family: "helvetica" sans-serif !important;
+  color: #777;
+  font-weight: 100 !important;
+  font-style: normal !important;
+  line-height: 1.5;
+  margin: 2rem -15px 0;
+  padding-top: 2rem;
+  border-top: 2px solid #eee;
+  text-align: center;
+}
+
+.privacidade {
+  color: #666;
+    text-align: center;
+    font-size: 15px;
+    font-family: sans-serif;
+    line-height: 1.5;
+    margin: 0px 10.5px;
+    margin-left: 10px;
+    margin-right: 18px;
+
+ 
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+  /* button {
+    width: 100%;
+  } */
+  .form__login {
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-items: center;
+
+    text-align: center;
+  }
+  
+  .form__area-login {
+    margin-top: 55px;
+  }
+  
+  .form__label__login {
+    font-family: "Segoe UI";
+    font-size: 16px;
+    font-weight: bold;
+    color: #777;
+  }
+  
+  .form__input-text__login {
+ 
+    font-family: "Segoe UI";
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #151517;
+    display: inline-block;
+  
+    margin-bottom: 1.8em;
+    margin-top: 1.2em;
+    padding: 0.5em 1em;
+    width: 90%;
+  }
+  
+  .cadastrar_link-link {
+    text-decoration: underline;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  .form__submit__button--login {
+    border: none;
+    border-radius: 0.25em;
+    /* background-color: #3593d1; */
+    background-color: #1d3557;
+    color: #fff;
+    cursor: pointer;
+    margin: 1.4em 0;
+    padding: 1em 1em;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    transition: all 0.3s;
+    justify-content: center;
+    width: 75%;
+  }
+  
+  .form__submit__button--login:hover {
+    background-color: #0553e4;
+    box-shadow: 0 0px 3px #3593d1;
+    color: white;
+  }
+  
+  .cadastrar__link {
+    font-size: 14px;
+    font-family: "helvetica" sans-serif !important;
+    color: #777;
+    font-weight: 100 !important;
+    font-style: normal !important;
+    line-height: 1.5;
+    margin: 2rem -15px 0;
+    padding-top: 2rem;
+    border-top: 2px solid #eee;
+    text-align: center;
+  }
+  
+  .privacidade {
+    color: #666;
+      text-align: center;
+      font-size: 15px;
+      font-family: sans-serif;
+      line-height: 1.5;
+      margin: 0px 10.5px;
+      margin-left: 10px;
+      margin-right: 18px;
+  
+   
+  }
+  
+  .cadastrar_link-link {
+    text-decoration: underline;
+  }
+}
+
 

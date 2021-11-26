@@ -13,36 +13,77 @@
   }
 }
 
+.main-manager {
+  text-align: center;
+  border-radius: 1.3em;
+  box-shadow: rgba(104, 104, 104, 0.2) 0px 8px 24px;
+  padding: 1em;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  align-items: center;
 }
 
 .container {
-  // width: 100vw;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
 
-
 .content-wrap {
+  display: flex;
+  direction: row;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   flex: 1;
+  width: 100%;
 }
 
 .row {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-// .row li {
-//   font-size: 13px;
-// }
+h5 {
+  font-family: "arial" !important;
+  font-size: 13px;
+  color: #fff;
+  // color: #009DAC;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  margin: 0;
+  position: relative;
+  text-align: left !important;
+  cursor: pointer;
+}
+
+.row li {
+  font-family: "arial" !important;
+  display: block;
+  font-size: 14px;
+  padding: 0.25rem 0;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left !important;
+  cursor: pointer;
+}
+
+.row li, h5 {
+  margin-left: 45px;
+}
 
 .col {
   flex-basis: 0;
@@ -62,17 +103,20 @@
 }
 
 .col-p {
-  // font-size: 12px;
+  font-size: 14px;
+  font-family: "arial" !important;
   display: block;
-  margin-top: 0;
+
   text-align: center;
-  margin-bottom: 1rem;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
+ 
+  margin-block-start: 2em;
+  margin-block-end: 1.8em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto;  
+  line-height: 1.4;
+  letter-spacing: normal;
 }
 
 hr {
@@ -84,11 +128,9 @@ hr {
   list-style: none;
 }
 
-
-
 .App-header {
   background-color: #282c34;
-  // min-height: 100vh;
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,6 +138,7 @@ hr {
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 
 .App-link {
   color: #61dafb;

@@ -5,55 +5,72 @@ import { Grid } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/material";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import Button from "@mui/material/Button";
 
 export default function InativeUser(props) {
-  //   const id = props.match.params.id;
+
   const id = props.match.params.id;
 
   const [user, setUser] = useState(undefined);
-  console.log("USER: ", user);
+ 
 
   useEffect(() => {
     const loadUser = async () => {
       const response = await Api.buildApiGetRequest(
-        Api.readByIdUserUrl(id),
+        Api.readByUsernameUserUrl(),
         true
       );
 
       const results = await response.json();
-      console.log("results: ", results);
+   
       setUser(results);
     };
 
     loadUser();
-  }, [id]);
+  }, []);
 
   const handleInative = async (event) => {
     event.preventDefault();
     const username = event.target.username.value;
 
-    const payload = {
-      username,
-    };
+    
+    
+    if (username === user.username) {
+      
+      const payload = {
+        username,
+      };
+      
+      const response = await Api.buildApiPatchRequest(
+        Api.inativeUserUrl(username),
+        payload,
+        true
+        );
 
-    const response = await Api.buildApiPatchRequest(
-      Api.inativeUserUrl(username),
-      payload,
-      true
-    );
+        
+            
+      
+      if (response.status === 200) {
+        alert("Usuário inativado.");
+        JwtHandler.clearJwt();
+       
 
-    if (response.status === 200) {
-      alert("Usuário inativado com sucesso.");
-      props.history.push(`/`);
+      } 
+
+      if (!response) {
+        return <div>Loading...</div>;
+      }
+
     } else {
       alert("Ops! Algo deu errado. O servidor retornou um erro inesperado.");
     }
 
-    if (!response) {
-      return <div>Loading...</div>;
-    }
-  };
+
+    } 
+
+
+
 
   return (
     <div className="App">
@@ -103,6 +120,7 @@ export default function InativeUser(props) {
             <Grid item xs={12} sm={6}>
               <div>
                 <TextField
+                  id="onDelete"
                   className="contained"
                   type="submit"
                   value="INATIVAR"

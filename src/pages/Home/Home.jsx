@@ -5,11 +5,11 @@ import CarouselItem from "../../components/shared/CarouselItem/CarouselItem";
 import BooksList from "../../components/structure/BooksList/BooksList";
 import "./Home.scss";
 
-function Home() {
+export function Home() {
   return (
     <div className="container__Home">
       <div className="wrapper___carousel">
-        <Carousel autoplay={true} animation="slide" duration="4000">
+        <Carousel autoplay={true} animation="slide" duration="4000" interval="8000">
           {MockPromo.map((item) => (
             <CarouselItem key={`promo_${item.id}`} item={item} />
           ))}
