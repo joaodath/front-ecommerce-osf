@@ -1,6 +1,7 @@
 import { TextField, Grid, FormControlLabel, Checkbox, Radio, RadioGroup , Box, Button, Typography, Paper} from '@material-ui/core'
 import { styled } from '@mui/material/styles';
 import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router'
 
 
 const handleSubmit = async(e) =>{
@@ -69,7 +70,7 @@ const handleSubmit = async(e) =>{
         publisher
     }
 
-    const response = await fetch('https://backend-osf-release-0-4-zallyo.herokuapp.com/books/1', {
+    const response = await fetch('https://backend-osf-release-0-4-zallyo.herokuapp.com/books/8', {
         method: "PATCH",
         headers: new Headers({
           "Content-type": "application/json",
@@ -85,9 +86,20 @@ const handleSubmit = async(e) =>{
 const ButtonCriar = styled(Button)(() =>({
     borderColor: 'black',
     color: 'black',
-    marginTop: 133,
+    padding: '5 10',
     '&:hover': {
         backgroundColor: 'red',
+        color: 'white',
+        border: 'none'
+    }
+}))
+
+const ButtonVoltar = styled(Button)(() =>({
+    borderColor: 'black',
+    color: 'black',
+    padding: '0 10',
+    '&:hover': {
+        backgroundColor: '#0000ff',
         color: 'white',
         border: 'none'
     }
@@ -134,20 +146,25 @@ function UpdateBook() {
                         <TextField required variant='outlined' label="Preço" type='number' name="price" defaultValue={book.price} style={{margin: 10, width: '80%'}}/>
                         <TextField required variant='outlined' label="Quantidade" type='number' name="inventoryAmount" defaultValue={book.inventoryAmount} style={{margin: 10, width: '80%'}}/>
                     </Grid>
-                    <Grid Item xs={4} sm={4}>
+                    <Grid Item xs={4} sm={4} style={{display: 'flex',flexDirection: 'column', justifyContent: 'flex- start', alignItems: 'center'}}>
                         <TextField  variant='outlined' label="Autor" name="author" defaultValue={book.author} style={{margin: 10, width: '80%'}}/>   
                         <TextField  variant='outlined' label="Catergoria" name="category" defaultValue={book.category} style={{margin: 10, width: '80%'}}/>
                         <TextField  variant='outlined' label="Editora" name="publisher" defaultValue={book.publisher} style={{margin: 10, width: '80%'}}/>
-                        <div style={{ display: 'flex', flexDirection: 'column',justifyContent: 'center', alignItems: 'flex-start' , width: '80%', paddingLeft: 50}}>
+                        <div style={{ display: 'flex', flexDirection: 'column',justifyContent: 'center', alignItems: 'flex-start' , width: '100%', paddingLeft: 60}}>
                             <RadioGroup name='tipo'>
                                 <FormControlLabel control={<Radio  />}  value="hardCover" label="Capa dura"/>
                                 <FormControlLabel control={<Radio />} value="ebook" label="E-book" />
                             </RadioGroup>
                             <FormControlLabel control={<Checkbox  name="desconto" />} label="Desconto"/>
                         </div>
-                        <ButtonCriar  variant='outlined' type="submit">
-                            CADASTRAR
-                        </ButtonCriar>
+                        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '40%', marginTop: 130}}>
+                            <ButtonCriar  variant='outlined' type="submit">
+                                CADASTRAR
+                            </ButtonCriar>
+                            <ButtonVoltar variant='outlined'>
+                                Voltar
+                            </ButtonVoltar>
+                        </div>
                     </Grid>
                 </Grid>
             </Box>
