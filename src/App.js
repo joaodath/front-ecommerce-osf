@@ -1,23 +1,21 @@
-import "./App.scss";
-import { Switch } from "react-router-dom";
+import './App.scss';
+import { Switch, Route, BrowserRouter } from "react-router-dom";
+import Home from './pages/Home/Home';
 import Header from "./components/shared/Header/Header";
-import Footer from "./components/shared/Footer/Footer";
-import { RoutesComponents } from "./routes/RoutesComponents";
-import { theme } from "./style/theme";
-import { ThemeProvider } from "@material-ui/core";
-
+import Footer from "./components/shared/Footer/Footer"
+import Products from './pages/Products/Products'
 
 function App() {
   return (
-
     <div className="App">
-      <ThemeProvider theme={theme}>
-        <Header />
+      <Header/>
+      <BrowserRouter>
         <Switch>
-          <RoutesComponents />
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/produtos" component={Products}/>
         </Switch>
-        <Footer />
-      </ThemeProvider>
+      </BrowserRouter>
+      <Footer/>
     </div>
   );
 }
