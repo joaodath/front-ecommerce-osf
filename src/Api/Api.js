@@ -10,28 +10,45 @@ export const Api = {
   // "http://localhost:8000",
 
 
+    
   // Endpoint - Login
   loginUrl: () => Api.baseUrl + "/auth/login",
-
+  
   loginTestUrl: (pass) => Api.baseUrl + "/auth/test",
-
-
+  
+  
   // Endpoint - User
   createUserUrl: () => Api.baseUrl + "/user/new",
 
   readAllUserUrl: () => Api.baseUrl + "/user/all",  
+  
+  readByIdUserUrl: (id) => Api.baseUrl + "/user/id/" + id,
+  
+  readByUsernameUserUrl: () => Api.baseUrl + "/user",
+  
+  updateUserUrl: (username) => Api.baseUrl + "/user/update",
+  
+  deleteSoftUserUrl: (username) => Api.baseUrl + "/user/softdelete/" + username,
+  
+  inativeUserUrl: (username) => Api.baseUrl + "/user/disable/",
+  
+  deleteUserUrl: (username) => Api.baseUrl + "/user/del/" + username,
 
   readUserUrl: () => Api.baseUrl + "/user/",
 
-  readByUsernameUserUrl: (username) => Api.baseUrl + "/user/" + username,
 
-  updateUserUrl: (id) => Api.baseUrl + "/user/" + id,
 
-  deleteSoftUserUrl: (username) => Api.baseUrl + "/user/softdelete/" + username,
+  //cart  
+  readAllUserShoppingHistoryUrl: () => Api.baseUrl + "/shopping-history/all/", 
+  
+  
+  
+  //CEP
+  cepUrl: () => Api.baseUrl + "/cep/find",
+  
 
-  inativeUserUrl: (username) => Api.baseUrl + "/user/disable/" + username,
 
-  deleteUserUrl: (id) => Api.baseUrl + "/user/" + id,
+
 
   // Endpoint - Products - Books
 
@@ -64,7 +81,7 @@ export const Api = {
   //jwt
 
   authHeader: () => ({
-    Authorization: "Bearer " + JwtHandler.getJwt(),
+    Authorization: "Bearer " + localStorage.getItem("JWT"),
   }),
 
   // GET

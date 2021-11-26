@@ -1,61 +1,42 @@
 import { Container, Grid, TextField, Typography } from "@mui/material";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import { Box } from "@mui/system";
 import React from "react";
 import { Api } from "../../Api/Api";
 
 export default function DeleteUser(props) {
-  const id = props.match.params.id;
+  const username = props.match.params.username;
 
-  console.log("props:  ", props);
   const option = props.location.state;
-  console.log("option", option);
+ 
 
   const handleDelete = async (event) => {
-    if (option === "inative") {
+    event.preventDefault();
+   
       const response = await Api.buildApiDeleteRequest(
-        // Api.deleteUserUrl(id),
-        console.log("Estou no Inative")
-        // true
-      );
-    } else if (option === "remove") {
-      const response = await Api.buildApiDeleteRequest(
-        // Api.deleteUserUrl(id),
-        console.log("Estou no Remove")
-        // true
-      );
-    } else if (option === "delete") {
-      const response = await Api.buildApiDeleteRequest(
-        Api.deleteUserUrl(id),
-        console.log("Estou no delete"),
+        Api.deleteUserUrl(username),
         true
       );
 
+
       if (response.status === 200) {
         alert("Usuário deletado com sucesso.");
-        //   props.history.push(`/`);
+        JwtHandler.clearJwt();
+      
       } else {
         alert(
-          "O usuário não foi deletado. O servidor retornou um erro inesperado."
+          "Usuário não deletado. O servidor retornou um erro inesperado."
         );
       }
 
       if (!response) {
         return <div>Loading...</div>;
       }
-    }
+    
   };
 
   return (
-    // <div>
-    //   <div className="">
-    //     Você tem certeza que deseja excluir sua conta?
-    //     <br />
-    //     <br />
-    //     <button className="" onClick={handleDelete}>
-    //       Confirmar exclusão
-    //     </button>
-    //   </div>
-    // </div>
+
 
     <div className="App">
       <Typography
@@ -91,6 +72,7 @@ export default function DeleteUser(props) {
             <Grid item xs={12} sm={8}>
               <div>
                 <TextField
+                  id="onDelete"
                   className="contained"
                   type="submit"
                   value="DELETAR"

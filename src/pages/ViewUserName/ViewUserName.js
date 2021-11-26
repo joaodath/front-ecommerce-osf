@@ -11,8 +11,8 @@ export default function ViewUserName(props) {
   const id = props.match.params.id;
   const username = props.match.params.username;
 
-  //   console.log("id: ", id, typeof id);
-    console.log("USERNAME:", username);
+
+
 
   const [user, setUser] = useState(undefined);
 
@@ -24,7 +24,7 @@ export default function ViewUserName(props) {
       );
 
       const results = await response.json();
-        console.log(response)
+   
       setUser(results.json());
     };
 
@@ -35,7 +35,7 @@ export default function ViewUserName(props) {
     return <div>Loading...</div>;
   }
 
-  console.log("userView:  ", user);
+
 
   return (
     <div className="App">
