@@ -19,7 +19,7 @@ function Home() {
       );
       const result = await response.json();
       setPromo1(result[0].books);
-      console.log(promo1);
+      console.log(result);
     };
 
     const loadPromo2 = async () => {
@@ -29,7 +29,7 @@ function Home() {
       );
       const result = await response.json();
       setPromo2(result[0].books);
-      console.log(promo2);
+      console.log(result);
     };
 
     loadPromo1();

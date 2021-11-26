@@ -1,6 +1,7 @@
 import React from "react";
 import { useCart } from "../../../hooks/useCart";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import "./BookCard.scss";
 
 function BookCard({ book }) {
@@ -10,12 +11,12 @@ function BookCard({ book }) {
 
   return (
     <div className="container__bookCard" style={{ maxWidth: "12rem" }}>
-      <p>
+      <p><Link to={`/viewbook/${book.id}`}>
         <img
           src={book.coverImg}
           alt={`${book.title}'s cover`}
           style={{ height: "10rem"}}
-        />
+        /></Link>
       </p>
       <p>{book.title}</p>
       <p>Preço: R$ {book.price}</p>

@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Api } from "../../../Api/Api";
+import { useHistory } from "react-router-dom";
+import useBooks from "../../../hooks/useBooks";
 
-function Searchbar() {
+export default function Searchbar() {
+  const { setBooks } = useBooks();
+  const history = useHistory();
   const [searchKey, setSearchKey] = useState("");
-  const [book, setBook] = useState([]);
+  // const [book, setBook] = useState();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -14,18 +18,26 @@ function Searchbar() {
         Api.readBookByTitle(searchKey),
         false
       );
+      console.log(response)
       const result = await response.json();
-      setBook(...result);
+      console.log(result)
+      
+      if (response.status === 200) {
+        setBooks([...result]);
+        history.push(`/browsebooks`);
+      }
     };
     loadBook();
-    console.log(book.id)
-
   };
 
   return (
     <div
       className="searchbar"
-      style={{ display: "flex", alignContent: "center", alignItems: "center" }}
+      style={{
+        display: "flex",
+        alignContent: "center",
+        alignItems: "center",
+      }}
     >
       <TextField
         className="search-field"
@@ -41,5 +53,3 @@ function Searchbar() {
     </div>
   );
 }
-
-export default Searchbar;
