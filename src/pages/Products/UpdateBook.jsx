@@ -1,7 +1,7 @@
 import { TextField, Grid, FormControlLabel, Checkbox, Radio, RadioGroup , Box, Button, Typography, Paper} from '@material-ui/core'
 import { styled } from '@mui/material/styles';
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router'
+import {Link} from 'react-router-dom'
 
 
 const handleSubmit = async(e) =>{
@@ -86,7 +86,7 @@ const handleSubmit = async(e) =>{
 const ButtonCriar = styled(Button)(() =>({
     borderColor: 'black',
     color: 'black',
-    padding: '5 10',
+    padding: '0 30',
     '&:hover': {
         backgroundColor: 'red',
         color: 'white',
@@ -97,7 +97,7 @@ const ButtonCriar = styled(Button)(() =>({
 const ButtonVoltar = styled(Button)(() =>({
     borderColor: 'black',
     color: 'black',
-    padding: '0 10',
+    padding: '0 20',
     '&:hover': {
         backgroundColor: '#0000ff',
         color: 'white',
@@ -161,9 +161,11 @@ function UpdateBook() {
                             <ButtonCriar  variant='outlined' type="submit">
                                 CADASTRAR
                             </ButtonCriar>
-                            <ButtonVoltar variant='outlined'>
-                                Voltar
-                            </ButtonVoltar>
+                            <Link to="/">
+                                <ButtonVoltar variant='outlined'>
+                                    Voltar
+                                </ButtonVoltar>
+                            </Link>
                         </div>
                     </Grid>
                 </Grid>
