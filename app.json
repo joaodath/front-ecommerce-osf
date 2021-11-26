@@ -1,0 +1,17 @@
+{
+  "name": "eCommerce frontend OSF - Bootcamp Blue Edtech",
+  "description": "Projeto de frontend para ecommerce desenvolvido no Bootcamp 2021 C005 da Blue Edtech para a OSF.",
+  "keywords": ["ecommerce", "bookstore", "bootcamp"],
+  "repository": "https://github.com/joaodath/front-ecommerce-osf",
+  "env": {
+    "REACT_APP_API_URL": {
+      "description": "API URL to connect with backend."
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
