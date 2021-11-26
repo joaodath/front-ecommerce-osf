@@ -14,6 +14,7 @@ import DeleteSoftUser from "../pages/DeleteSoftUser/DeleteSoftUser";
 import Cart from "../pages/Cart/Cart";
 import Checkout from "../pages/Checkout/Checkout";
 import BrowseBooks from "../pages/BrowseBooks/BrowseBooks";
+import ViewBook from "../pages/ViewBook/ViewBook";
 // import { Book } from "../components/Book/CreateBook";
 
 export const RoutesComponents = () => {
@@ -37,6 +38,7 @@ export const RoutesComponents = () => {
       <Route path="/cart" component={Cart} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/browsebooks" component={BrowseBooks}/>
+      <Route path="/viewbook/:id" component={ViewBook} />
     </>
   );
 };
