@@ -3,33 +3,41 @@ import { Api } from "../../Api/Api";
 import { parseISO, format } from "date-fns";
 import { addDays } from "date-fns";
 import LinkButton from "../../components/LinkButton/LinkButton";
-import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
+import { Container } from "@mui/material";
 import { Grid } from "@material-ui/core";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
+
 import * as css from "../../styles/style.css";
 
 
 export default function ViewUser(props) {
-  const id = props.match.params.id;
+  const username = props.match.params.username;
 
-  const [user, setUser] = useState(undefined);
+  
+  const [user, setUser] = useState();
 
   useEffect(() => {
     const loadUser = async () => {
       const response = await Api.buildApiGetRequest(
-        Api.readByIdUserUrl(id),
+        Api.readByUsernameUserUrl(),
         true
       );
 
       const results = await response.json();
-
+        
       setUser(results);
+
     };
 
     loadUser();
-  }, [id]);
+  },[]);
+
+
+
+  
 
   if (!user) {
     return <div>Loading...</div>;
@@ -170,7 +178,7 @@ export default function ViewUser(props) {
               </div>
             </Grid>
 
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={8}>
               <div>
                 <TextField
                   required
@@ -189,6 +197,22 @@ export default function ViewUser(props) {
                 />
               </div>
             </Grid>
+
+            <Grid item xs={12} sm={4}>
+                <div>
+                  <TextField
+                    required
+                    type="text"
+                    className="outlined-required"
+                    label="BAIRRO"
+                    name="bairro"
+                    id="bairro"
+                    multiline
+                    helperText="Bairro sem abreviações "
+                    defaultValue={user.neighborhood}
+                    />
+                </div>
+              </Grid>
 
             <Grid item xs={12} sm={4}>
               <div>
@@ -280,9 +304,9 @@ export default function ViewUser(props) {
               </div>
             </Grid>
 
-            <Grid item xs={12} sm={4} justify="center">
+            <Grid item xs={12} sm={3} justify="center">
               <LinkButton
-                to={"/user/update/" + id}
+                to={`/user/update/${username}`}
                 className="button button--user"
               >
                 EDITAR
@@ -297,7 +321,7 @@ export default function ViewUser(props) {
 
             <Grid item xs={12} sm={3} justify="center">
               <LinkButton
-                to={"/user/manager/" + id}
+                to={`/user/manager/${username}`}
                 className="button button--user"
               >
                 GERENCIAR

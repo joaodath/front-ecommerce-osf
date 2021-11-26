@@ -8,5 +8,5 @@ export default function Logout() {
     localStorage.setItem("userId", "")
   });
 
-  return <Redirect to="/login" />;
+  return <Redirect to="/" />;
 }

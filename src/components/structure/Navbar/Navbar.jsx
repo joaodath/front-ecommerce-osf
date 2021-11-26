@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Searchbar from "../Searchbar/Searchbar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Container } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import { JwtHandler } from "../../../jwt-handler/JwtHandler";
 import { useCart } from "../../../hooks/useCart";

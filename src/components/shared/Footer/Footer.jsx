@@ -6,33 +6,33 @@ function Footer() {
     return (
         <div className="main-footer">
             <div className="container">
-                <div className="row">
+                <div className="row" id="div__row-footer">
                     {/* <h3>Footer</h3>  */}
                     {/* col1 */}
                     <div className="col">
-                        <h4>Título 1</h4>
+                        <h5>Sobre a Bookstore </h5>
                         <ul className="list-unstyled">
-                            <li> 30 3702-2636 </li>
-                            <li> Feira de Santana, Bahia </li>
-                            <li> Rua: Souza Filho, 33 </li>
+                            <li> Quem somos </li>
+                            <li> Parceiros </li>
+                            <li> Cupons de descontos</li>
                         </ul>
                     </div>
                     {/* col2 */}
                     <div className="col">
-                        <h4>Título 2</h4>
+                        <h5>Atendimento ao Cliente</h5>
                         <ul className="list-unstyled">
-                            <li> 21 2564-0246 </li>
-                            <li> São Gonçalo, Rio de Janeiro </li>
-                            <li> Rua: Alfredo Backer, 40 </li>
+                            <li> Fale conosco </li>
+                            <li> Entrega e devolução </li>
+                            <li> Perguntas e respostas </li>
                         </ul>
                     </div>
                     {/* col3 */}
                     <div className="col">
-                        <h4>Título 2</h4>
+                        <h5>Nossas Políticas</h5>
                         <ul className="list-unstyled">
-                            <li> 11 31584-0378 </li>
-                            <li> Santo André, São Paulo </li>
-                            <li> Rua: Gilmar Franco, 57 </li>
+                            <li> Políticas de entrega</li>
+                            <li> Política de Privacidade </li>
+                            <li> Política de Vendas </li>
                         </ul>
                     </div>
                 </div>
