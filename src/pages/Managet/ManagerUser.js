@@ -7,35 +7,30 @@ import { Container } from "@mui/material";
 import Button from "@mui/material/Button";
 
 export default function ManagerUser(props) {
-  //   const id = props.match.params.id;
-  const id = props.match.params.id;
+
+  const username = props.match.params.username;
  
 
   const handleInative = async (event) => {
     event.preventDefault();
     const option = "inative";
-    console.log("Manager", option)
-    props.history.push(`/user/inative/${id}`, option);
+ 
+    props.history.push(`/user/inative/${username}`, option);
   };
 
-  const handleRemove = async (event) => {
-    event.preventDefault();
-    const option = "remove";
-    props.history.push(`/user/remove/${id}`, option);
-  };
 
   const handleDelete = async (event) => {
     event.preventDefault();
     const option = "delete";
-    props.history.push(`/user/delete/${id}`, option);
+    props.history.push(`/user/delete/${username}`, option);
   };
 
-  if (!id) {
+  if (!username) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="App">
+    <div className="main-manager">
       <Typography
         variant="h4"
         gutterBottom
@@ -62,7 +57,7 @@ export default function ManagerUser(props) {
             marginBottom="30px"
           >
             <Grid item xs={12} sm={6} className="App__option-delete">
-              Deseja desabilitar temporáriamente o seu cadastro?
+              Desabilitar temporáriamente o seu cadastro?
             </Grid>
 
             <Grid item xs={12} sm={3}>
@@ -77,26 +72,11 @@ export default function ManagerUser(props) {
               </Button>
             </Grid>
 
-            <br />
-            <Grid item xs={12} sm={6} className="App__option-delete">
-              Deseja remover os seus dados?
-            </Grid>
 
-            <Grid item xs={12} sm={3}>
-              <Button
-                className="manager__deleted"
-                onClick={handleRemove}
-                variant="contained"
-                component="button"
-                size="small"
-              >
-                Remover
-              </Button>
-            </Grid>
 
             <br />
             <Grid item xs={12} sm={6} className="App__option-delete">
-              Deseja apagar a sua conta?
+              Apagar a sua conta?
             </Grid>
 
             <Grid item xs={12} sm={3}>

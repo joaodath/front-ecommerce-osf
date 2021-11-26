@@ -1,6 +1,60 @@
-
 .submit {
   align-items: center;
   justify-content: center;
 }
 
+button.manager__cep {
+  padding-top: 13px ;
+  padding-bottom: 13px ;
+  padding-top: 13px ;
+  padding-bottom: 13px ;
+}
+
+div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-1.css-exfl4s-MuiGrid-root {
+  margin-top: 35px;
+  margin-bottom: 30px;
+}
+
+#onSub { 
+  border-radius: 0.25em;
+  background-color: #1d3557;
+  color: #fff !important;
+  justify-content: center;
+  transition: all 0.3s;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em 1em;
+  cursor: pointer;
+
+}
+
+
+
+  #onDelete {
+    border-radius: 0.25em;
+    background-color: #ff3b2f;
+    color: #fff !important;
+    justify-content: center;
+    transition: all 0.3s;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em 1em;
+    cursor: pointer;
+  }
+
+
+#onSub:hover {
+    
+  border-style: none;
+  border-color: #0958c5 ;
+  background-color: #0958c5;
+  border-radius: 0.25em;
+  color: #fff !important;
+  justify-content: center;
+  transition: all 0.3s;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em 1em;
+  cursor: pointer;
+
+}
