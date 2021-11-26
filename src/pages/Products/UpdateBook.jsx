@@ -86,7 +86,7 @@ const handleSubmit = async(e) =>{
 const ButtonCriar = styled(Button)(() =>({
     borderColor: 'black',
     color: 'black',
-    padding: '0 30',
+    padding: '10 30',
     '&:hover': {
         backgroundColor: 'red',
         color: 'white',
@@ -157,7 +157,7 @@ function UpdateBook() {
                             </RadioGroup>
                             <FormControlLabel control={<Checkbox  name="desconto" />} label="Desconto"/>
                         </div>
-                        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '40%', marginTop: 130}}>
+                        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: 250, marginTop: 130}}>
                             <ButtonCriar  variant='outlined' type="submit">
                                 CADASTRAR
                             </ButtonCriar>
