@@ -5,7 +5,8 @@
   "repository": "https://github.com/joaodath/front-ecommerce-osf",
   "env": {
     "REACT_APP_API_URL": {
-      "description": "API URL to connect with backend."
+      "description": "API URL to connect with backend.",
+      "value": "https://backend-osf-release-0-4-zallyo.herokuapp.com"
     }
   },
   "formation": {
