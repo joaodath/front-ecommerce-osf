@@ -8,9 +8,10 @@ import { Container } from "@mui/material";
 import Button from "@mui/material/Button";
 
 export default function DeleteSoftUser(props) {
-
+  //   const id = props.match.params.id;
   const id = props.match.params.id;
-
+  console.log("props",props)
+  console.log("id",id)
 
   const [user, setUser] = useState(undefined);
  

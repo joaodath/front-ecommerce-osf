@@ -5,36 +5,30 @@ import { Api } from "../../Api/Api";
 import Box from "@mui/material/Box";
 import { Grid } from "@material-ui/core";
 import TextField from "@mui/material/TextField";
-import { JwtHandler } from "../../jwt-handler/JwtHandler";
-
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 
-
-
 export default function UpdateUser(props) {
-  
-  const username = props.match.params.username;
+  const id = props.match.params.id;
 
+  const [user, setUser] = useState(undefined);
+  
+  console.log("USER: ", user);
 
-  
-  const [user, setUser] = useState();
-  
   useEffect(() => {
     const loadUser = async () => {
       const response = await Api.buildApiGetRequest(
-        Api.readByUsernameUserUrl(),
+        Api.readByIdUserUrl(id),
         true
-        );
-        
-        const results = await response.json();
-        
+      );
+
+      const results = await response.json();
+      console.log("results: ", results);
       setUser(results);
-      console.log(user)
     };
 
     loadUser();
-  },[]);
+  }, [id]);
 
   
   
@@ -58,8 +52,6 @@ export default function UpdateUser(props) {
     const city = event.target.city.value;
     const address = event.target.address.value;
     const phonenumber = event.target.phonenumber.value;
-    const neighborhood = event.target.neighborhood.value;
-    
     
     const payload = {
       name,
@@ -74,26 +66,24 @@ export default function UpdateUser(props) {
       city,
       address,
       phonenumber,
-      neighborhood
     };
     
     const response = await Api.buildApiPatchRequest(
-      Api.updateUserUrl(username),
+      Api.updateUserUrl(id),
       payload,
       true,
       
       );
       
       const body = await response.json();
- 
+      console.log("Body:  ", body)
       
       if (response.status === 200) {
-       
         alert("Edição armazenada com sucesso");
-        const username = body.username;
+        const id = body.id;
         
         // Verifique seus dados
-        props.history.push(`/user/view/${username}`);
+        props.history.push(`/user/view/id/${id}`);
       } else {
         alert("Ops! Algo deu errado!");
       }
@@ -161,9 +151,6 @@ export default function UpdateUser(props) {
                     id="username"
                     helperText="Apenas o nome de usuário. Ex: Aninha21"
                     defaultValue={user.username}
-                    InputProps={{
-                      readOnly: true,
-                    }}
                   />
                 </div>
               </Grid>
@@ -231,7 +218,7 @@ export default function UpdateUser(props) {
                 </div>
               </Grid>
 
-              <Grid item xs={12} sm={8}>
+              <Grid item xs={12} sm={12}>
                 <div>
                   <TextField
                     required
@@ -244,22 +231,6 @@ export default function UpdateUser(props) {
                     maxRows={4}
                     helperText="Rua, número, complemento e Bairro "
                     defaultValue={user.address}
-                  />
-                </div>
-              </Grid>
-
-              <Grid item xs={12} sm={4}>
-                <div>
-                  <TextField
-                    required
-                    type="text"
-                    className="outlined-required"
-                    label="BAIRRO"
-                    name="neighborhood"
-                    id="neighborhood"
-                    multiline
-                    helperText="Bairro sem abreviações "
-                    defaultValue={user.neighborhood}
                   />
                 </div>
               </Grid>
@@ -342,7 +313,6 @@ export default function UpdateUser(props) {
               <Grid item xs={12} sm={6}>
                 <div>
                   <TextField
-                    id="onSub" 
                     className="contained"
                     type="submit"
                     value="SALVAR"

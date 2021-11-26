@@ -6,20 +6,18 @@ import { RoutesComponents } from "./routes/RoutesComponents";
 import { theme } from "./style/theme";
 import { ThemeProvider } from "@material-ui/core";
 
+
 function App() {
   return (
+
     <div className="App">
-      <div className="page-container">
+      <ThemeProvider theme={theme}>
         <Header />
-        <div className="content-wrap">
-          <ThemeProvider theme={theme}>
-            <Switch>
-              <RoutesComponents />
-            </Switch>
-          </ThemeProvider>
-        </div>
+        <Switch>
+          <RoutesComponents />
+        </Switch>
         <Footer />
-      </div>
+      </ThemeProvider>
     </div>
   );
 }

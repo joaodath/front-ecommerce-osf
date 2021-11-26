@@ -1,86 +1,12 @@
-.container__bookCard {
-  display: flex;  
-  flex-direction: column;
-  padding: 1rem 0.4rem 0.4rem 0.4rem;
-  row-gap: 0.4rem;
-  width: 230px;
-  height: 435px;
-  margin-top: 30px;
-  justify-content: space-between !important;
-  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+.container__bookCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem .4rem .4rem .4rem;
+    row-gap: .4rem;
+    width: 20rem;
+    min-height: 20rem;
+    max-height: 27rem;
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+
 }
-
-img {
-  width: auto;
-  height: auto;
-  max-height: 210.2px;
-  max-width: 100%;
-}
-
-@media only screen and (min-width: 1210px) {
-    .container__bookCard {
-   
-      width: 192px;
-
-    }
-  }
-
-// @media only screen and (max-width: 1200px) {
-//   .container__bookCard {
-
-//     width: 140px;
-
-//   }
-// }
-
-@media only screen and (max-width: 1024px) {
-  .container__bookCard {
-
-    width: 168px;
-    
-  }
-}
-
-
-
-@media only screen and (max-width: 780px) {
-  .container__bookCard {
-
-    width: 180px;
-
-    
-  }
-}
-
-
-
-
-@media only screen and (max-width: 425px) {
-    .container__bookCard {
-
-      width: 160px;
-
-      
-    }
-  }
-
-
-  @media only screen and (max-width: 375px) {
-    .container__bookCard {
-
-      width: 135px;
-
-      
-    }
-  }
-
-
-  @media only screen and (max-width: 330px) {
-    .container__bookCard {
-
-      width: 120px;
-      
-    }
-  }
-
-
