@@ -29,9 +29,9 @@ export const theme = createTheme({
     subtitle1: {
       fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
     },
-    fontWeightLight: 400,
-    fontWeightRegular: 500,
-    fontWeightMedium: 700,
+    fontWeightLight: 100,
+    fontWeightRegular: 300,
+    fontWeightMedium: 600,
     fontWeightBold: 900,
     fontSize: 14,
     h1: {

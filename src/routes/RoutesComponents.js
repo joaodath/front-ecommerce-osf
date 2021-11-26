@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router";
-import {Home} from "../pages/Home/Home"
+import  Home  from "../pages/Home/Home";
 import CreateUser from "../pages/CreateUser/CreateUser";
 import DeleteUser from "../pages/DeleteUser/DeleteUser";
 import UpdateUser from "../pages/UpdateUser/UpdateUser";
@@ -14,6 +14,8 @@ import DeleteSoftUser from "../pages/DeleteSoftUser/DeleteSoftUser";
 import Cart from "../pages/Cart/Cart";
 
 import ViewHistoric from "../pages/ViewHistoric/ViewHistoric";
+import Checkout from "../pages/Checkout/Checkout";
+import BrowseBooks from "../pages/BrowseBooks/BrowseBooks";
 // import { Book } from "../components/Book/CreateBook";
 
 export const RoutesComponents = () => {
@@ -42,6 +44,8 @@ export const RoutesComponents = () => {
 
       {/* <Route path="book/create" component={CreateBook} /> */}
       <Route path="/cart" component={Cart} />
+      <Route path="/checkout" component={Checkout} />
+      <Route path="/browsebooks" component={BrowseBooks}/>
     </>
   );
 };

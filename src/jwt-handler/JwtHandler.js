@@ -1,3 +1,5 @@
+import jsonwebtoken from 'jsonwebtoken';
+
 export const JwtHandler = {
   JWT_KEY: "JWT",
 
@@ -24,4 +26,14 @@ export const JwtHandler = {
   },
 
   isJwtValid: () => Boolean(JwtHandler.getJwt()),
+
+  getJwtPayload: () => {
+    const jwt = JwtHandler.getJwt();
+
+    if (!jwt) {
+      return null;
+    }
+
+    return jsonwebtoken.decode(jwt);
+  }
 };

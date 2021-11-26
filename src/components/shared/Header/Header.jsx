@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../../structure/Navbar/Navbar";
 import { Api } from "../../../Api/Api";
 import { JwtHandler } from "../../../jwt-handler/JwtHandler";
@@ -37,6 +37,7 @@ export default function Header(props) {
 
   loadUser();
 
+export default function Header() {
   return (
     <div className="header">
       <div className="container__header" style={{ margin: "2rem 0 .5rem 0" }}>

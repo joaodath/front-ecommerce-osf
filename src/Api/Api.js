@@ -1,9 +1,13 @@
 import { JwtHandler } from "../jwt-handler/JwtHandler";
 
 export const Api = {
-  baseUrl: 
-    "http://localhost:8000",
-    // "https://backend-osf-release-0-4-zallyo.herokuapp.com",
+  baseUrl: "https://backend-osf-release-0-4-zallyo.herokuapp.com",
+  // "https://backend-osf-5.herokuapp.com",
+  // "https://backend-osf-release-0-4-zallyo.herokuapp.com",
+  // "https://backend-osf-release-0-3-h28izb.herokuapp.com",
+  // "https://backend-osf-release-0-2-i5xlpw.herokuapp.com",
+  // "https://backend-osf-release-0-1-ifzzla.herokuapp.com",
+  // "http://localhost:8000",
 
 
     
@@ -30,6 +34,8 @@ export const Api = {
   
   deleteUserUrl: (username) => Api.baseUrl + "/user/del/" + username,
 
+  readUserUrl: () => Api.baseUrl + "/user/",
+
 
 
   //cart  
@@ -43,6 +49,34 @@ export const Api = {
 
 
 
+
+  // Endpoint - Products - Books
+
+  createBookUrl: () => Api.baseUrl + "/books/new",
+
+  readAllBookUrl: () => Api.baseUrl + "/books/all",
+
+  readBookByIdUrl: (id) => Api.baseUrl + "/books/id/" + id,
+
+  readBookByTitle: (title) => Api.baseUrl + `/books/title/${title}`,
+  
+  readBooksByCategoryUrl: (category) => Api.baseUrl + `/books/category/${category}`,
+  
+  readBooksByAuthorUrl: (author) => Api.baseUrl + `/books/author/${author}`,
+  
+  readBooksByPublisherUrl: (publisher) => Api.baseUrl + `/books/publisher/${publisher}`,
+
+  // Endpoint - Categories
+
+  readAllCategoryUrl: () => Api.baseUrl + "/category/all",
+
+  // Endpoint - Authors
+
+  readAllAuthorUrl: () => Api.baseUrl + "/author/all",
+
+  // Endpoint - Publishers
+
+  readAllPublisherUrl: () => Api.baseUrl + "/publisher/all",
 
   //jwt
 

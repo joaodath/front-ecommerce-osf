@@ -9,12 +9,12 @@ function BookCard({ book }) {
   const isInCart = (book) => !!cartItems.find((item) => item.id === book.id);
 
   return (
-    <div className="container__bookCard">
+    <div className="container__bookCard" style={{ maxWidth: "12rem" }}>
       <p>
         <img
           src={book.coverImg}
           alt={`${book.title}'s cover`}
-          style={{ width: "10rem" }}
+          style={{ height: "10rem"}}
         />
       </p>
       <p>{book.title}</p>
@@ -25,11 +25,10 @@ function BookCard({ book }) {
       )}
 
       {!isInCart(book) && (
-        <Button variant="outlined" onClick={() => addProduct(book)}>
+        <Button variant="contained" onClick={() => addProduct(book)}>
           Adicionar
         </Button>
       )}
-      <Button variant="contained">Detalhes</Button>
     </div>
   );
 }

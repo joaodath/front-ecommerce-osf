@@ -108,10 +108,13 @@ export default function CreateUser(props) {
       neighborhood
     };
 
+    console.log(payload)
+
     const response = await Api.buildApiPostRequest(
       Api.createUserUrl(),
-      payload
-      // true
+      payload,
+      false,
+      console.log("PAYLOAD:  ", payload)
     );
 
     const body = await response.json();
