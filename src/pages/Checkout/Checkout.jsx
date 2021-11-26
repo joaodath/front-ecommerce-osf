@@ -1,40 +1,44 @@
-import React, { useEffect } from "react";
-import useUser from "../../hooks/useUser";
-import { Api } from "../../Api/Api"
-import "./Checkout.scss";
+import React, { useState, useEffect } from "react";
+import { Button, CircularProgress } from "@mui/material";
+import { useCart } from "../../hooks/useCart";
+import { Link } from "react-router-dom";
 
-function Checkout() {
-  const { user, setUser } = useUser();
+function CheckOut() {
+  const { clearCart } = useCart();
+  const [checkout, setCheckout] = useState(false);
 
   useEffect(() => {
-    const loadUser = async () => {
-        const response = await Api.buildApiGetRequest(Api.readUserUrl(), true)
-        const result = await response.json();
-        setUser(result)
-      }
-      loadUser()
+    clearCart();
+    setTimeout(() => { setCheckout(true) }, 3000);
+  }, []);
 
-  }, [])
-
-  console.log(user);
-
-  if (!user) {
-      return <p>Loading...</p>
-  }
-  
-  return (
-    <div className="container__addresses">
-        <h3>Endereço de Entrega:</h3>
-      <div className="wrapper__address-details"> 
-        <p>{user.name}</p>
-        <p>{user.address}</p>
-        <p>Cidade: {user.city}</p>
-        <p>Estado {user.state}</p>
-        <p>País: {user.country}</p>
-        <p>CEP: {user.cep}</p>
+  if (!checkout) {
+    return (
+        <div style={{ minHeight: "100vh", margin: "0 auto", rowGap: "1.8rem" }}>
+        <br/>
+        <br/>
+        <h2>Aguarde um instante...</h2>
+        <div><CircularProgress/></div>
       </div>
-    </div>
-  );
+
+    )
+  } else {
+
+      return (
+        <div style={{ minHeight: "100vh", margin: "0 auto", rowGap: "1.8rem" }}>
+          <br/>
+          <br/>
+          <h2>Pedido Realizado!</h2>
+          <br/>
+          <p>Obrigado pela sua compra.</p>
+          <br/>
+          <Link to="/">
+            <Button variant="contained">Home</Button>
+          </Link>
+        </div>
+      );
+  }
+
 }
 
-export default Checkout;
+export default CheckOut;

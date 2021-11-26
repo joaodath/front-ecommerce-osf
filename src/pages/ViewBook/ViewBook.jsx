@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Api } from "../../Api/Api";
-import { Button } from "@mui/material"; 
-import "./ViewBook.scss"
+import { Button } from "@mui/material";
+import { useCart } from "../../hooks/useCart";
+
+import "./ViewBook.scss";
 
 export default function ViewBook(props) {
   const id = props.match.params.id;
-
+  const { addProduct, cartItems, increase } = useCart();
   const [book, setBook] = useState();
+
+  const isInCart = (book) => !!cartItems.find((item) => item.id === book.id);
 
   useEffect(() => {
     const loadBook = async () => {
@@ -21,8 +25,9 @@ export default function ViewBook(props) {
     loadBook();
   }, []);
 
+
   if (!book) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   return (
@@ -35,12 +40,22 @@ export default function ViewBook(props) {
             Autor: <span className="blue">{book.author[0].name}</span>
           </p>
           <p>
-            Editora:   <span className="blue">{book.publisher[0].name}</span>
+            Editora: <span className="blue">{book.publisher[0].name}</span>
           </p>
-          <br/>
+          <br />
           <h1>{`R$${book.price}`}</h1>
-          <br/>
-          <Button variant="contained">Comprar</Button>
+          <br />
+          {isInCart(book) && (
+            <Button variant="outlined" onClick={() => increase(book)}>
+              Adicionar + 1
+            </Button>
+          )}
+
+          {!isInCart(book) && (
+            <Button variant="contained" onClick={() => addProduct(book)}>
+              Adicionar
+            </Button>
+          )}
         </div>
       </section>
       <section className="detail-container detail-container__sinopsis">

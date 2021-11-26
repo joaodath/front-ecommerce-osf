@@ -11,6 +11,14 @@ export const Api = {
   // "http://localhost:8000",
 
 
+  // EndPoint - cart
+  userCartUrl: () => Api.baseUrl + "/cart/user",
+  anonCartUrl: () => Api.baseUrl + "/cart/anon",
+  
+  newAnonCartUrl: () => Api.baseUrl + "/cart/new/anon",
+  newUserCartUrl: () => Api.baseUrl + "/cart/new/user",
+
+
   // Endpoint - Login
   loginUrl: () => Api.baseUrl + "/auth/login",
 

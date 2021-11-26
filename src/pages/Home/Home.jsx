@@ -5,6 +5,7 @@ import CarouselItem from "../../components/shared/CarouselItem/CarouselItem";
 import "./Home.scss";
 import PromoBanner from "../../components/shared/PromoBanner/PromoBanner";
 import { Api } from "../../Api/Api";
+import { CircularProgress } from "@mui/material"
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -37,7 +38,11 @@ function Home() {
   }, []);
 
   if (!promo1 || !promo2) {
-    return <h2>Loading...</h2>
+    return (
+      <div style={{ minHeight: "100vh" }}>
+        <div><CircularProgress/></div>
+      </div>
+    );
   }
 
   return (
