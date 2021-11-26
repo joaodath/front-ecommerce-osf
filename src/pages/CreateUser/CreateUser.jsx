@@ -170,7 +170,7 @@ export default function CreateUser(props) {
                     required
                     type="text"
                     className="outlined-helperText"
-                    label="NOME COMLETO"
+                    label="NOME COMPLETO"
                     name="name"
                     id="name"
                     helperText="Nome sem abreviações"
