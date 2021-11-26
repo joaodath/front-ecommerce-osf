@@ -109,7 +109,7 @@ function UpdateBook() {
 
     useEffect(() => {
         const bookData = async() =>{
-            const response = await fetch("https://backend-osf-release-0-4-zallyo.herokuapp.com/books/id/1")
+            const response = await fetch("https://backend-osf-release-0-4-zallyo.herokuapp.com/books/14")
             const data = await response.json()
             setbook(data);
             console.log(book.coverImg)
@@ -159,7 +159,7 @@ function UpdateBook() {
                         </div>
                         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: 250, marginTop: 130}}>
                             <ButtonCriar  variant='outlined' type="submit">
-                                CADASTRAR
+                                Atualizar
                             </ButtonCriar>
                             <Link to="/">
                                 <ButtonVoltar variant='outlined'>
