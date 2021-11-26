@@ -6,6 +6,7 @@ import { RoutesComponents } from "./routes/RoutesComponents";
 import { theme } from "./style/theme";
 import { ThemeProvider } from "@material-ui/core";
 
+
 function App() {
   return (
     <div className="App">
@@ -14,7 +15,7 @@ function App() {
         <div className="content-wrap">
           <ThemeProvider theme={theme}>
             <Switch>
-              <Route exact path="/" component={Home} />
+              {/* <Route exact path="/" component={Home} /> */}
               <RoutesComponents />
             </Switch>
           </ThemeProvider>

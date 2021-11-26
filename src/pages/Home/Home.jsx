@@ -8,7 +8,7 @@ import { Api } from "../../Api/Api";
 import { CircularProgress } from "@mui/material"
 import { Link } from "react-router-dom";
 
-function Home() {
+export function Home() {
   const [promo1, setPromo1] = useState();
   const [promo2, setPromo2] = useState();
 

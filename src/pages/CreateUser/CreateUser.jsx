@@ -9,7 +9,7 @@ import { parseISO } from "date-fns";
 import { subHours } from "date-fns";
 import { Container } from "@mui/material";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
-import { cpf } from "cpf-cnpj-validator";
+//import { cpf } from "cpf-cnpj-validator";
 import { useForm } from "react-hook-form";
 import { Button, FormControl, FormLabel, FormHelperText } from "@mui/material";
 import { LocalLaundryService } from "@material-ui/icons";
@@ -21,15 +21,15 @@ import "./createuser.css";
 export default function CreateUser(props) {
 
 
-  const validateCPF = (num) => {
+  // const validateCPF = (num) => {
     
-    const auxNum = cpf.isValid(num);
-    if (auxNum === true) {
-      return num;
-    } else {
+  //   const auxNum = cpf.isValid(num);
+  //   if (auxNum === true) {
+  //     return num;
+  //   } else {
  
-    }
-  };
+  //   }
+  // };
 
 
   const [adress, setAdress] = useState(undefined);
@@ -68,7 +68,7 @@ export default function CreateUser(props) {
 
     // validate()
     let num = event.target.cpf.value;
-    const cpf = validateCPF(num);
+    const cpf = num; //validateCPF(num);
 
     //DATA DE NASCIMENTO
     const data_Brasileira = event.target.birthDate.value;
