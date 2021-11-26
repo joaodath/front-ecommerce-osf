@@ -41,11 +41,23 @@ export const Api = {
 
   readBookByIdUrl: (id) => Api.baseUrl + "/books/id/" + id,
 
-  readBooksByCategoryUrl: () => Api.baseUrl + "/books/category",
+  readBooksByCategoryUrl: (category) => Api.baseUrl + `/books/category/${category}`,
+  
+  readBooksByAuthorUrl: (author) => Api.baseUrl + `/books/author/${author}`,
+  
+  readBooksByPublisherUrl: (publisher) => Api.baseUrl + `/books/publisher/${publisher}`,
 
   // Endpoint - Categories
 
   readAllCategoryUrl: () => Api.baseUrl + "/category/all",
+
+  // Endpoint - Authors
+
+  readAllAuthorUrl: () => Api.baseUrl + "/author/all",
+
+  // Endpoint - Publishers
+
+  readAllPublisherUrl: () => Api.baseUrl + "/publisher/all",
 
   //jwt
 
