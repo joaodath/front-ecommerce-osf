@@ -1,21 +1,44 @@
-import React from "react";
-import TextField from "@mui/material";
+import React, { useState } from "react";
+import { TextField, Button } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { Api } from "../../../Api/Api";
 
 function Searchbar() {
-  const handleSubmit = (e) => {
+  const [searchKey, setSearchKey] = useState("");
+  const [book, setBook] = useState([]);
+
+  const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Teste");
+    const loadBook = async () => {
+      const response = await Api.buildApiGetRequest(
+        Api.readBookByTitle(searchKey),
+        false
+      );
+      const result = await response.json();
+      setBook(...result);
+    };
+    loadBook();
+    console.log(book.id)
+
   };
 
   return (
-    <form className="searchbar" onSubmit={handleSubmit}>
+    <div
+      className="searchbar"
+      style={{ display: "flex", alignContent: "center", alignItems: "center" }}
+    >
       <TextField
-        id="outlined-basic"
         className="search-field"
+        id="searchField"
         name="searchField"
+        placeholder="Busque pelo Título"
+        onChange={(e) => setSearchKey(e.target.value)}
+        sx={{ width: "30rem" }}
       />
-      <input type="text" className="search-btn" value="search" />
-    </form>
+      <Button onClick={handleSearch} sx={{ height: "2rem", width: "2rem" }}>
+        <SearchIcon sx={{ height: "2rem", width: "2rem" }} />
+      </Button>
+    </div>
   );
 }
 

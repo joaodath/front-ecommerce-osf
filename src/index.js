@@ -4,13 +4,19 @@ import "./index.scss";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import CartContextProvider from "./contexts/CartContext";
+import AppContextProvider from "./contexts/AppContext";
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+      <AppContextProvider>
+        <CartContextProvider>
+          <App />
+        </CartContextProvider>
+      </AppContextProvider>
+    </BrowserRouter>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 
