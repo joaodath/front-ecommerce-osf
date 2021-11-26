@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { Api } from "../../../Api/Api";
 
 function Searchbar() {
   const [searchKey, setSearchKey] = useState("");
+  const [book, setBook] = useState([]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(searchKey);
+    const loadBook = async () => {
+      const response = await Api.buildApiGetRequest(
+        Api.readBookByTitle(searchKey),
+        false
+      );
+      const result = await response.json();
+      setBook(...result);
+    };
+    loadBook();
+    console.log(book.id)
+
   };
 
   return (

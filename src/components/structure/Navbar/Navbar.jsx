@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Searchbar from "../Searchbar/Searchbar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import { JwtHandler } from "../../../jwt-handler/JwtHandler";
 import { useCart } from "../../../hooks/useCart";
-import { Link, useHistory } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import { Avatar } from "@mui/material";
 // import { Api } from "../../../Api/Api";
 import useUser from "../../../hooks/useUser";
 
 function Navbar() {
   const { itemCount } = useCart();
-  const { user, isLogged, setIsLogged } = useUser();
+  const { isLogged, setIsLogged } = useUser();
 
   // const history = useHistory();
   // setIsLogged(!!JwtHandler.isJwtValid());
