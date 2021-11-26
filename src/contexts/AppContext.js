@@ -15,7 +15,6 @@ function AppContextProvider({ children }) {
         const response = await Api.buildApiGetRequest(Api.readUserUrl(), true)
         const result = await response.json();
         setUser(result)
-        console.log(user)
       }
       loadUser()
     }

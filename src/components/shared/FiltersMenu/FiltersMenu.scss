@@ -1,0 +1,10 @@
+.container__filterMenu {
+  display: flex;
+  flex-direction: column;
+  max-width: 10rem;
+  
+  .wrapper__filters {
+    display: flex;
+    flex-direction: column;
+  }
+}
