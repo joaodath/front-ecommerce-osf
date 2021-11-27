@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router";
-import {Home} from "../pages/Home/Home"
+import Home from "../pages/Home/Home"
 import CreateUser from "../pages/CreateUser/CreateUser";
 import DeleteUser from "../pages/DeleteUser/DeleteUser";
 import UpdateUser from "../pages/UpdateUser/UpdateUser";
@@ -16,6 +16,7 @@ import Checkout from "../pages/Checkout/Checkout";
 import BrowseBooks from "../pages/BrowseBooks/BrowseBooks";
 
 import ViewHistoric from "../pages/ViewHistoric/ViewHistoric";
+// import { Home } from "@material-ui/icons";
 // import { Book } from "../components/Book/CreateBook";
 
 export const RoutesComponents = () => {

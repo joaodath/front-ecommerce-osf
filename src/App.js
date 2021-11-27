@@ -4,6 +4,7 @@ import Header from "./components/shared/Header/Header";
 import Footer from "./components/shared/Footer/Footer";
 import { RoutesComponents } from "./routes/RoutesComponents";
 import { theme } from "./style/theme";
+// import Home from "../pages/Home/Home"
 import { ThemeProvider } from "@material-ui/core";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         <div className="content-wrap">
           <ThemeProvider theme={theme}>
             <Switch>
-              <Route exact path="/" component={Home} />
+              {/* <Route exact path="/" component={Home} /> */}
               <RoutesComponents />
             </Switch>
           </ThemeProvider>
